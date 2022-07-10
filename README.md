@@ -1,3 +1,8 @@
+<div style="display:none">
+
+
+这是一段没有被注释的文字
+
 # The Minimalist theme
 
 *Minimalist is a Jekyll theme, inspired by the [Minimalist](https://github.com/BDHU/minimalist) theme. You can [preview the theme to see what it looks like](http://bdhu.github.io/minimalist), or even [use it today](#usage).*
@@ -138,3 +143,4 @@ The theme contains a minimal test suite, to ensure a site with the theme would b
 ## Contributors
 
 Special thanks to [@godalming123](https://github.com/godalming123) for adding dark mode support. Also thank [@solvaholic](https://github.com/solvaholic), [@tildehacker](https://github.com/tildehacker), and other contributors for making multiple bug fixes and improvements. All contributions are welcome.
+</div>
