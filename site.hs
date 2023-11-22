@@ -85,7 +85,7 @@ main = hakyll $ do
         compile copyFileCompiler
     -}
     -- raw files
-    match "files/*" $ version "raw" $ do
+    match "files/**" $ version "raw" $ do
         route   idRoute
         compile copyFileCompiler
     -- sitemap
