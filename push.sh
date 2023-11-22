@@ -15,7 +15,6 @@ export NODE_PATH=$(npm root --quiet -g)
 # Build new files
 # stack build --ghc-options=-O2
 # stack exec chaosite clean
-c
 
 # Build index
 python3 pub.py > _site/index.html
