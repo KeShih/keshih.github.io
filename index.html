@@ -3,16 +3,13 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
   <title>Ke Shi</title>
   <meta name="description" content="The personal webpage of Ke Shi.">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css" crossorigin="anonymous">
   <!-- Do not remove katex render. Index page is a idpage --> 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
-
     <!-- The loading of KaTeX is deferred to speed up page rendering -->
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
-
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       var macros={
@@ -36,7 +33,6 @@
       if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
     }}});
   </script>
-
   <!-- toggle selected publications -->
   <script>
     function togglePublication() {
@@ -47,17 +43,14 @@
       x.style.display = "none";
     }
   </script>
-
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-
   <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
   <link rel="stylesheet" href="/css/homepage.css?v=20220803" crossorigin="anonymous">
-  
 </head>
-<body>
+<!-- default display : all publications -->
+<body onload="togglePublication()">
 <div class="container">
-
 <div class="person" itemscope="" itemtype="http://schema.org/Person">
     <meta itemprop="gender" content="Male">
     <!-- <meta itemprop="birthDate" content="September 12, 1989">
@@ -68,7 +61,6 @@
   <ruby><rb>史</rb><rp>(</rp><rt>shǐ</rt><rp>)</rp></ruby>
   <ruby><rb>可</rb><rp>(</rp><rt>kě</rt><rp>)</rp></ruby>
 </h1></div>
-
 <div class="row">
   <div class="intro-left" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
     <meta itemprop="representativeOfPage" content="True">
@@ -83,84 +75,62 @@
       My research interests revolve around algorithms and combinatorial optimization, particularly in approximate counting algorithms and their correlations with the phenomenon of phase transitions in statistical physics.
       <!-- You can find my CV <a href="files/cv.pdf">here</a> -->
    </p>
-
     <p>You can contact me through email <a href="mailto:self.ke.shi@gmail.com"><samp itemprop="email">self.ke.shi@gmail.com</samp></a>.</p>
   </div>
 </div>
 </div>
-
-
 <div class="row pubtypeheader" id="pub-toggle">
   <span>Selected Publications<br /><span style="font-size:0.6em" onclick="togglePublication()"><em><a>See all publications.</a></em></span></span> 
 </div>
-
-{% for pub_type in pub_types %}
-<div class="cv-non-selected row pubtypeheader">{{pub_type.title}}</div>
-  {% for paper in pub_type.papers %}
-  <!-- {{paper.title}}  -->
-  <div class="{{paper.selected}} row cv-entry" id="{{paper.id}}">
-    <input type="checkbox" class="abstract-guard" id="{{paper.id}}-toggle">
+<div class="cv-non-selected row pubtypeheader">Conference Publications</div>
+  <!-- A Polynomial Time Algorithm for Finding a Minimum 4-Partition of a Submodular Function  -->
+  <div class="cv-selected row cv-entry" id="sub4part">
+    <input type="checkbox" class="abstract-guard" id="sub4part-toggle">
     <div class="cv-left">
-      {% if 'a' in paper.show %}
-        <label class="showmore material-icons" for="{{paper.id}}-toggle"></label>
-      {% else %}
-        <i class="material-icons disabled">expand_more</i>
-      {% endif %}
-
-      {% if 'd' in paper.show %}
-        <a href="files/papers/{{paper.id}}.pdf"><i class="material-icons">description</i></a>
-      {% else %}
-        <i class="material-icons disabled">description</i>
-      {% endif %}
-
-      {% if 'p' in paper.show %}
-        <a href="files/presentations/{{paper.id}}.pdf"><i class="material-icons">airplay</i></a>
-      {% else %}
-        <i class="material-icons disabled">airplay</i>
-      {% endif %}
+        <label class="showmore material-icons" for="sub4part-toggle"></label>
+        <a href="files/papers/sub4part.pdf"><i class="material-icons">description</i></a>
+        <a href="files/presentations/sub4part.pdf"><i class="material-icons">airplay</i></a>
     </div>
-
     <div class="cv-right">
-      <cite class="paper-title">{{paper.title}}</cite>
-      {% if paper.authors %}
+      <cite class="paper-title">A Polynomial Time Algorithm for Finding a Minimum 4-Partition of a Submodular Function</cite>
       <ul class="coauthor-list">
-        {% for author in paper.authors %}<li>
-            {% if author.link %}<a href="{{author.link}}">{{author.name}}</a>{% else %}{{author.name}}{% endif %}</li>{% endfor %}</ul>
-      {% endif %}
-
+        <li>
+            Tsuyoshi Hirayama</li><li>
+            <a href="https://yhliu126.github.io/">Yuhao Liu</a></li><li>
+            <a href="https://www.kurims.kyoto-u.ac.jp/en/list/makino.html">Kazuhisa Makino</a></li><li>
+            <a href="https://keshi.pro/">Ke Shi</a></li><li>
+            <a href="https://chaoxu.prof">Chao Xu</a></li></ul>
       <p><em>
-      {% if paper.bib %}
-        {{paper.bib}}
-      {% elif paper.pub %}
-        {% if pub_type.title == "Journal Publications" %}
-          {{paper.pub.venue}} <time>{{paper.year}}</time>.
-        {% else %}
-          <abbr title="{{paper.pub.venue}}">{{paper.pub.name}}</abbr> <time>{{paper.year}}</time>.
-        {% endif %}
-      {% else %}
-        <time>{{paper.year}}</time>.
-      {% endif %}
+          <abbr title="ACM-SIAM Symposium on Discrete Algorithms">SODA</abbr> <time>2023</time>.
       </em><p>
-
-      {% for note in paper.notes %}
-        <aside class="cv-non-selected note">{{note}}</aside>
-      {% endfor %}
     </div>
-
-    {% if paper.abstract %}
     <div class="abstract">
-      {{paper.abstract}}
-      {% if paper.dedication %}
-        <aside class="dedication">{{paper.dedication}}</aside>
-      {% endif %}
+      <p>In this paper, we study the minimum <span class="math">k</span>-partition problem of submodular functions, i.e.,  given a finite set <span class="math">V</span> and a submodular function <span class="math">f:2^V\to \R</span>,   computing a <span class="math">k</span>-partition <span class="math"> { V_1, \ldots, V_k }</span> of <span class="math">V</span>  with minimum <span class="math">\sum_{i=1}^k f(V_i)</span>.   The problem is a natural generalization of the minimum <span class="math">k</span>-cut problem in graphs and hypergraphs.  It is known that the problem is NP-hard for general <span class="math">k</span>, and solvable in polynomial time for <span class="math">k \leq 3</span>.   In this paper, we construct the first polynomial-time algorithm for the minimum <span class="math">4</span>-partition problem.</p>
     </div>
-    {% endif %}
-
   </div>
-  {% endfor %}
-{% endfor %}
-
-
+<div class="cv-non-selected row pubtypeheader"><span>Manuscripts<br /><span style="font-size:0.6em"><em>Some manuscripts are available upon request.</em></span></span></div>
+  <!-- Almost optimum <span class="math">\ell</span>-covering of <span class="math">\Z_n</span>  -->
+  <div class="cv-non-selected row cv-entry" id="cyclic-cover">
+    <input type="checkbox" class="abstract-guard" id="cyclic-cover-toggle">
+    <div class="cv-left">
+        <label class="showmore material-icons" for="cyclic-cover-toggle"></label>
+        <a href="files/papers/cyclic-cover.pdf"><i class="material-icons">description</i></a>
+        <i class="material-icons disabled">airplay</i>
+    </div>
+    <div class="cv-right">
+      <cite class="paper-title">Almost optimum <span class="math">\ell</span>-covering of <span class="math">\Z_n</span></cite>
+      <ul class="coauthor-list">
+        <li>
+            <a href="https://keshi.pro/">Ke Shi</a></li><li>
+            <a href="https://chaoxu.prof">Chao Xu</a></li></ul>
+      <p><em>
+        <time>2022</time>, Submitted.
+      </em><p>
+    </div>
+    <div class="abstract">
+      <p>A subset <span class="math">B</span> of ring <span class="math">\Z_n</span> is called a <span class="math">\ell</span>-covering set if <span class="math">{ ab \pmod n \mid 0\leq a \leq \ell, b\in B} = \Z_n</span>. We show there exists a <span class="math">\ell</span>-covering set of <span class="math">\Z_n</span> of size <span class="math">O(\frac{n}{\ell}\log n)</span> for all <span class="math">n</span> and <span class="math">\ell</span>, and how to construct such set. We also show examples where any <span class="math">\ell</span>-covering set must have size <span class="math">\Omega(\frac{n}{\ell}\frac{\log n}{\log \log n})</span>. The proof uses a refined bound for relative totient function obtained through sieve theory, and existence of a large divisor with linear divisor sum.</p>
+    </div>
+  </div>
 </div>
 </body>
 </html>
