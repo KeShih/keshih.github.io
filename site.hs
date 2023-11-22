@@ -105,22 +105,22 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/sitemap.xml" sitemapCtx
 
     -- rss 
-    create ["rss.xml"] $ do
-        route idRoute
-        compile $ do
-            let feedCtx = postCtx <> bodyField "description"
-            posts <- fmap (take 10) . recentFirst =<<
-                loadAllSnapshots "posts/*" "content"
-            renderRss feedConfiguration feedCtx posts
+    -- create ["rss.xml"] $ do
+    --     route idRoute
+    --     compile $ do
+    --         let feedCtx = postCtx <> bodyField "description"
+    --         posts <- fmap (take 10) . recentFirst =<<
+    --             loadAllSnapshots "posts/*" "content"
+    --         renderRss feedConfiguration feedCtx posts
 
     -- cnrss 
-    create ["cnrss.xml"] $ do
-        route idRoute
-        compile $ do
-            let feedCtx = postCtx <> bodyField "description"
-            posts <- fmap (take 10) . recentFirst =<<
-                loadAllSnapshots "cnposts/*" "content"
-            renderRss feedConfiguration feedCtx posts
+    -- create ["cnrss.xml"] $ do
+    --     route idRoute
+    --     compile $ do
+    --         let feedCtx = postCtx <> bodyField "description"
+    --         posts <- fmap (take 10) . recentFirst =<<
+    --             loadAllSnapshots "cnposts/*" "content"
+    --         renderRss feedConfiguration feedCtx posts
 
     -- Index
     match "blog.html" $ do
@@ -157,7 +157,7 @@ main = hakyll $ do
 katexFilter = withItemBody (unixFilter "./katex_cli" [])
 
 idPages = ["favicon.ico",
-           "googled46bf4e1cd540289.html",
+        --    "googled46bf4e1cd540289.html",
            "CNAME",
            "index.html",
            ".nojekyll"]
@@ -181,13 +181,13 @@ sourceField key = field key $
 
 sourceUrl xs = (take (length xs - 4) xs) ++ "md"
 
-feedConfiguration :: FeedConfiguration
-feedConfiguration = FeedConfiguration
-  { feedTitle = "The Art Gallery Guardian"
-  , feedDescription = "Mostly notes on algorithms"
-  , feedAuthorName = "Chao Xu"
-  , feedAuthorEmail = "mgcclx@gmail.com"
-  , feedRoot = "https://chaoxu.prof"}
+-- feedConfiguration :: FeedConfiguration
+-- feedConfiguration = FeedConfiguration
+--   { feedTitle = "The Art Gallery Guardian"
+--   , feedDescription = "Mostly notes on algorithms"
+--   , feedAuthorName = "Chao Xu"
+--   , feedAuthorEmail = "mgcclx@gmail.com"
+--   , feedRoot = "https://chaoxu.prof"}
 
 --------------------------------------------------------------------------------
 postCtx :: Context String 
