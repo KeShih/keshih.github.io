@@ -2,6 +2,7 @@
 ---
 venues:
   SODA: ACM-SIAM Symposium on Discrete Algorithms
+  MP: Mathematical Programming
 
 people:
   Chao Xu: https://chaoxu.prof
@@ -55,13 +56,13 @@ notes:
 # journal publications
 
 ---
-id: sub4part
-show: [d,p]
+id: sub4part-journal
+show: [d]
 title: A Polynomial Time Algorithm for Finding a Minimum 4-Partition of a Submodular Function
 authors: [Tsuyoshi Hirayama, Yuhao Liu, Kazuhisa Makino, Ke Shi, Chao Xu]
 type: journal
 year: 2023
-pub: Mathematical Programming
+pub: MP
 selected: true
 abstract: >
   In this paper, we study the minimum $k$-partition problem of submodular functions, i.e., 
