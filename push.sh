@@ -13,8 +13,8 @@ export NODE_PATH=$(npm root --quiet -g)
 # cp ~/Documents/GitHub/katex_cli/target/release/katex_cli katex_cli
 
 # Build new files
-# stack build --ghc-options=-O2
-# stack exec chaosite clean
+stack build --ghc-options=-O2
+stack exec chaosite clean
 
 # Build index
 python3 pub.py > _site/index.html
