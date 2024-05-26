@@ -108,7 +108,10 @@ parsed = []
 for z in types.keys():
     q = {}
     q["title"] = types[z] 
-    q["papers"] = build_papers([paper for paper in t if paper["type"]==z])
+    p = [paper for paper in t if paper["type"]==z]
+    if p == []:
+        continue
+    q["papers"] = build_papers(p)
     parsed.append(q)
 
 # print parsed
