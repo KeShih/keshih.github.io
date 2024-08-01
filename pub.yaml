@@ -2,6 +2,8 @@
 ---
 venues:
   SODA: ACM-SIAM Symposium on Discrete Algorithms
+  SOSA: Symposium on Simplicity in Algorithms
+  COCOON: International Computing and Combinatorics Conference
   MP: Mathematical Programming
 
 people:
@@ -92,5 +94,19 @@ notes:
 
 # manuscripts
 
+---
+id: matching-ssm
+show: [d]
+title: From Zero-freeness to Strong Spatial Mixing of Matching Polynomial
+authors: [Shuai Shao, Ke Shi]
+type: manuscript
+year: 2024
+bib: 2024, Submitted.
+abstract: >
+  We study the problem of approximating the matching polynomial on graphs with
+  maximum degree $\Delta$ and show that the matching polynomial exhibits strong spatial mixing
+  for all complex edge parameter $z \in \C \backslash (-\infty,-\frac{1}{4(\Delta-1)}]$. Additionally,
+  we provide a FPTAS for approximating the matching polynomial using correlation decay.
+  
 # thesis
 
