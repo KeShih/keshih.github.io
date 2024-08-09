@@ -97,16 +97,16 @@ notes:
 ---
 id: matching-ssm
 show: [d]
-title: From Zero-freeness to Strong Spatial Mixing of Matching Polynomial
+title: "Strong spatial mixing for the matching polynomial: A simple proof via Heilmann-Lieb Theorem"
 authors: [Shuai Shao, Ke Shi]
 type: manuscript
 year: 2024
 bib: 2024, Submitted.
 abstract: >
-  We study the problem of approximating the matching polynomial on graphs with
-  maximum degree $\Delta$ and show that the matching polynomial exhibits strong spatial mixing
-  for all complex edge parameter $z \in \C \backslash (-\infty,-\frac{1}{4(\Delta-1)}]$. Additionally,
-  we provide a FPTAS for approximating the matching polynomial using correlation decay.
+    We study the connections between strong spatial mixing and zero-freeness, the two main notions used to devise deterministic approximation algorithms for counting problems. 
+    Following a recent framework introduced by [Regts, G. (2023). Absence of zeros implies strong spatial mixing. Probability Theory and Related Fields, 186(1), 621-641.] for the vertex model, we show that the implication from zero-freeness of the partition function to strong spatial mixing also works for the matching polynomial, a typical counting problem in the edge model.  
+    Based on Heilmann and Lieb's results, a zero-free region $C_\Delta=\C \backslash (-\infty,-\frac{1}{4(\Delta-1)}]$ of the partition function and a Christoffel--Darboux type identity, we give a very simple proof for strong spatial mixing of the matching polynomial on graphs of degree bounded by $\Delta$ with any complex edge parameter $z \in C_\Delta$.
+    This proof does not rely on the tree recursion which is commonly used  for proving strong spatial mixing in previous results.
   
 # thesis
 
