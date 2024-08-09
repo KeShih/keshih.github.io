@@ -7,7 +7,8 @@ git checkout develop
 git add . && git commit -m "update" && git push origin develop:develop
 
 # compile katex-cli
-cargo build --release
+# make sure katex_cli is here
+# cargo build --release
 cp target/release/katex_cli katex_cli
 
 # build site
@@ -17,7 +18,8 @@ stack exec chaosite build
 # build index
 python3 pub.py > _site/index.html
 
-# get previous files
+# develop to master
+git checkout master
 rsync -a --checksum --filter='P _site/' --filter='P _cache/' --filter='P .git/' --filter='P .stack-work/' --filter='P .gitignore' --filter='P .gitattributes' --delete-excluded _site/ .
 rm -r drafts
 
