@@ -13,6 +13,7 @@ people:
   Tsuyoshi Hirayama:
   Kazuhisa Makino: https://www.kurims.kyoto-u.ac.jp/en/list/makino.html
   Shuai Shao: http://staff.ustc.edu.cn/~wwwucuc/
+  Yike Chen: https://stargazer-cyk.github.io/
 
 types:
   conference: Conference Publications
@@ -124,6 +125,20 @@ abstract: >
     These SSM properties can be exploited to devise FPTASes via Weitz's and Barvinok's algorithms. 
     Our proof is based on the framework introduced by [Regts, G. (2023). Absence of zeros implies strong spatial mixing. Probability Theory and Related Fields, 186(1), 621-641.], namely local dependence of coefficients (LDC) and a uniform bound implies SSM.
     In order to establish LDC, we prove a division relation for the 2-spin system on general graphs.
+
+---
+id: scp
+show: [d]
+authors: [Yike Chen, Ke Shi, Chao Xu]
+title: "An Optimal Algorithm for the Stacker Crane Problem on Fixed Topologies"
+type: manuscript
+year: 2024
+bib: 2024, Submitted.
+abstract: >
+    The Stacker Crane Problem (SCP) is a variant of the Traveling Salesman Problem. In SCP, pairs of pickup and delivery points are designated on a graph,
+    and a crane must visit these points to move objects from each pickup location to its respective delivery point. The goal is to minimize the total distance traveled.
+    SCP is known to be NP-hard, even on tree structures. The only positive results, in terms of polynomial-time solvability, apply to graphs that are topologically equivalent to a path or a cycle.
+    We propose an algorithm that is optimal for each fixed topology, running in near-linear time. This is achieved by demonstrating that the problem is fixed-parameter tractable (FPT) when parameterized by both the cycle rank and the number of branch vertices.
 
 
 # thesis
