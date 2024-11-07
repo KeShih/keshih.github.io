@@ -133,7 +133,7 @@ authors: [Yike Chen, Ke Shi, Chao Xu]
 title: "An Optimal Algorithm for the Stacker Crane Problem on Fixed Topologies"
 type: manuscript
 year: 2024
-# bib: 2024, Submitted.
+bib: 2024, Submitted.
 abstract: >
     The Stacker Crane Problem (SCP) is a variant of the Traveling Salesman Problem. In SCP, pairs of pickup and delivery points are designated on a graph,
     and a crane must visit these points to move objects from each pickup location to its respective delivery point. The goal is to minimize the total distance traveled.
