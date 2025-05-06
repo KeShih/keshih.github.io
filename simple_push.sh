@@ -12,7 +12,7 @@ if [ ! -f .katex/release/katex_cli ]; then
     cargo build --release --target-dir .katex
 fi
 # make sure katex_cli is here
-cp target/release/katex_cli katex_cli
+cp .katex/release/katex_cli katex_cli
 
 # build site
 stack build --ghc-options=-O2
