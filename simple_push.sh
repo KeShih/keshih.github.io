@@ -7,8 +7,11 @@ git checkout develop
 git add . && git commit -m "update" && git push origin develop:develop
 
 # compile katex-cli
+if [ ! -f target/release/katex_cli ]; then
+    echo "katex_cli not found, building..."
+    cargo build --release
+fi
 # make sure katex_cli is here
-# cargo build --release
 cp target/release/katex_cli katex_cli
 
 # build site
