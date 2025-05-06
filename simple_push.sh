@@ -22,7 +22,7 @@ python3 pub.py > _site/index.html
 
 # develop to master
 git checkout master
-rsync -a --checksum --filter='P _site/' --filter='P _cache/' --filter='P .git/' --filter='P .stack-work/' --filter='P target' --filter='P .gitignore' --filter='P .gitattributes' --delete-excluded _site/ .
+rsync -a --checksum --filter='P _site/' --filter='P _cache/' --filter='P .git/' --filter='P .stack-work/' --filter='P target/' --filter='P .gitignore' --filter='P .gitattributes' --delete-excluded _site/ .
 rm -r drafts
 
 # push master to remote
