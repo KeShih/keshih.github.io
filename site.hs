@@ -154,7 +154,7 @@ main = hakyll $ do
 
     match "templates/*" $ compile templateCompiler
 
-katexFilter = withItemBody (unixFilter "./katex_cli" [])
+katexFilter = withItemBody (unixFilter "./target/release/katex_cli" [])
 
 idPages = ["favicon.ico",
         --    "googled46bf4e1cd540289.html",

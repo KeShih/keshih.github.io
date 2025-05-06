@@ -11,7 +11,6 @@ if [ ! -f target/release/katex_cli ]; then
     echo "katex_cli not found, building..."
     cargo build --release
 fi
-cp target/release/katex_cli katex_cli
 
 # build site
 stack build --ghc-options=-O2
@@ -22,7 +21,7 @@ python3 pub.py > _site/index.html
 
 # develop to master
 git checkout master
-rsync -a --checksum --filter='P _site/' --filter='P _cache/' --filter='P .git/' --filter='P .stack-work/' --filter='P target/release/katex_cli' --filter='P .gitignore' --filter='P .gitattributes' --delete-excluded _site/ .
+rsync -a --checksum --filter='P _site/' --filter='P _cache/' --filter='P .git/' --filter='P .stack-work/' --filter='P target' --filter='P .gitignore' --filter='P .gitattributes' --delete-excluded _site/ .
 rm -r drafts
 
 # push master to remote
