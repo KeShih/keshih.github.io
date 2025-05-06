@@ -8,6 +8,5 @@ node_modules/
 package-lock.json
 package.json
 katex_cli
-.katex
 target
 
