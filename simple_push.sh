@@ -4,7 +4,7 @@
 git checkout develop
 
 # push dev to remote
-git add . && git commit -m "update" && git push origin develop:develop
+git add . && git commit -m "update" && git push
 
 # compile katex-cli
 if [ ! -f target/release/katex_cli ]; then
@@ -26,7 +26,7 @@ rm -r drafts
 
 # push master to remote
 touch .nojekyll
-git add . && git commit -m "update" && git push origin master:master
+git add . && git commit -m "update" && git push
 
 # return to develop branch
 git checkout develop
