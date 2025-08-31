@@ -5,6 +5,7 @@ venues:
   SOSA: Symposium on Simplicity in Algorithms
   COCOON: International Computing and Combinatorics Conference
   MP: Mathematical Programming
+  ISAAC: International Symposium on Algorithms and Computation
 
 people:
   Chao Xu: https://chaoxu.prof
@@ -52,6 +53,19 @@ abstract: >
     SCP is known to be NP-hard, even on tree structures. The only positive results, in terms of polynomial-time solvability, apply to graphs that are topologically equivalent to a path or a cycle.
     We propose an algorithm that is optimal for each fixed topology, running in near-linear time. This is achieved by demonstrating that the problem is fixed-parameter tractable (FPT) when parameterized by both the cycle rank and the number of branch vertices.
 
+---
+
+id: cyclic-cover
+title: Almost optimum $\ell$-covering of $\Z_n$
+type: conference
+show: [d]
+pub: COCOON
+year: 2024
+authors: [Ke Shi, Chao Xu]
+abstract: >
+  A subset $B$ of ring $\Z_n$ is called a $\ell$-covering set if $\{ ab \pmod n \mid 0\leq a \leq \ell, b\in B\} = \Z_n$.
+  We show there exists a $\ell$-covering set of $\Z_n$ of size $O(\frac{n}{\ell}\log n)$ for all $n$ and $\ell$, and how to construct such set.
+  We also show examples where any $\ell$-covering set must have size $\Omega(\frac{n}{\ell}\frac{\log n}{\log \log n})$. The proof uses a refined bound for relative totient function obtained through sieve theory, and existence of a large divisor with linear divisor sum.
 
 ---
 id: sub4part
@@ -72,20 +86,6 @@ abstract: >
   In this paper, we construct the first polynomial-time algorithm for the minimum $4$-partition problem.
 notes:
  - The [journal version](/files/papers/sub4part-journal.pdf) was serialized in Mathematical Programming.
-
----
-
-id: cyclic-cover
-title: Almost optimum $\ell$-covering of $\Z_n$
-type: conference
-show: [d]
-pub: COCOON
-year: 2024
-authors: [Ke Shi, Chao Xu]
-abstract: >
-  A subset $B$ of ring $\Z_n$ is called a $\ell$-covering set if $\{ ab \pmod n \mid 0\leq a \leq \ell, b\in B\} = \Z_n$.
-  We show there exists a $\ell$-covering set of $\Z_n$ of size $O(\frac{n}{\ell}\log n)$ for all $n$ and $\ell$, and how to construct such set.
-  We also show examples where any $\ell$-covering set must have size $\Omega(\frac{n}{\ell}\frac{\log n}{\log \log n})$. The proof uses a refined bound for relative totient function obtained through sieve theory, and existence of a large divisor with linear divisor sum.
 
 # journal publications
 
