@@ -46,7 +46,7 @@ show: [d]
 title: "Zero-Freeness is All You Need: A Weitz-Type FPTAS for the Entire Lee–Yang Zero-Free Region"
 authors: [Shuai Shao, Ke Shi]
 type: conference
-year: 2025
+year: 2026
 pub: ITCS
 abstract: >
     We present a Weitz-type FPTAS for the ferromagnetic Ising model across the entire Lee–Yang zero-free region, without relying on the strong spatial mixing (SSM) property. Our algorithm is Weitz-type for two reasons. First, it expresses the partition function as a telescoping product of ratios, with the key being to approximate each ratio. Second, it uses Weitz’s self-avoiding walk tree, and truncates it at logarithmic depth to give a good and efficient approximation. The key difference from the standard Weitz algorithm is that we approximate a carefully designed edge-deletion ratio instead of the marginal probability of a vertex’s spin, ensuring our algorithm does not require SSM.
