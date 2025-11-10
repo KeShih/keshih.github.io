@@ -6,6 +6,7 @@ venues:
   COCOON: International Computing and Combinatorics Conference
   MP: Mathematical Programming
   ISAAC: International Symposium on Algorithms and Computation
+  ITCS: Innovations in Theoretical Computer Science
 
 people:
   Chao Xu: https://chaoxu.prof
@@ -39,6 +40,19 @@ types:
 # bib allow user to add extra information
 
 # conference publications
+---
+id: ising-weitz
+show: [d]
+title: "Zero-Freeness is All You Need: A Weitz-Type FPTAS for the Entire Lee–Yang Zero-Free Region"
+authors: [Shuai Shao, Ke Shi]
+type: conference
+year: 2025
+pub: ITCS
+abstract: >
+    We present a Weitz-type FPTAS for the ferromagnetic Ising model across the entire Lee–Yang zero-free region, without relying on the strong spatial mixing (SSM) property. Our algorithm is Weitz-type for two reasons. First, it expresses the partition function as a telescoping product of ratios, with the key being to approximate each ratio. Second, it uses Weitz’s self-avoiding walk tree, and truncates it at logarithmic depth to give a good and efficient approximation. The key difference from the standard Weitz algorithm is that we approximate a carefully designed edge-deletion ratio instead of the marginal probability of a vertex’s spin, ensuring our algorithm does not require SSM.
+    <br />
+    Furthermore, by establishing local dependence of coefficients (LDC), we indeed prove a novel form of SSM for these edge-deletion ratios, which, in turn, implies the standard SSM for the random cluster model. This is the first SSM result for the random cluster model on general graphs, beyond lattices. We prove LDC using a new division relation, and remarkably, such relations hold quite universally. As a result, we establish LDC for a variety of models. Combined with existing zero-freeness results for these models, we derive new SSM results for them. Our work suggests that both Weitz-type FPTASes and SSM can be derived from zero-freeness, while zero-freeness alone suffices for Weitz-type FPTASes, SSM additionally requires LDC, a combinatorial property independent of zero-freeness.
+
 ---
 id: scp
 show: [d]
@@ -117,29 +131,15 @@ show: [d]
 title: "Strong spatial mixing for the matching polynomial: A simple proof via Heilmann-Lieb Theorem"
 authors: [Shuai Shao, Ke Shi]
 type: manuscript
-year: 2024
-bib: 2024, Submitted.
+year: 2025
+bib: 2025, Submitted.
 abstract: >
     We study the connections between strong spatial mixing and zero-freeness, the two main notions used to devise deterministic approximation algorithms for counting problems. 
     Following a recent framework introduced by [Regts, G. (2023). Absence of zeros implies strong spatial mixing. Probability Theory and Related Fields, 186(1), 621-641.] for the vertex model, we show that the implication from zero-freeness of the partition function to strong spatial mixing also works for the matching polynomial, a typical counting problem in the edge model.  
     Based on Heilmann and Lieb's results, a zero-free region $C_\Delta=\C \backslash (-\infty,-\frac{1}{4(\Delta-1)}]$ of the partition function and a Christoffel--Darboux type identity, we give a very simple proof for strong spatial mixing of the matching polynomial on graphs of degree bounded by $\Delta$ with any complex edge parameter $z \in C_\Delta$.
     This proof does not rely on the tree recursion which is commonly used  for proving strong spatial mixing in previous results.
 
----
-id: ising-edge-ssm
-show: [d]
-title: "Strong Spatial Mixing for Ferromagnetic Ising Models: A Novel Perspective from Edge Activity"
-authors: [Shuai Shao, Ke Shi]
-type: manuscript
-year: 2024
-bib: 2024, Submitted.
-abstract: >
-    We prove a totally novel form of strong spatial mixing (SSM) for the ferromagnetic Ising model in terms of edge activities. 
-    This SSM property holds for the entire zero-free region of Lee--Yang Theorem, i.e., $\beta>1$ and $|\lambda|<1$ or symmetrically $|\lambda|>1$. 
-    We also prove a form of SSM in terms of external fields in a smaller region $\beta>1$ and $|\lambda|<1/\beta$ or symmetrically $|\lambda|>\beta$. 
-    These SSM properties can be exploited to devise FPTASes via Weitz's and Barvinok's algorithms. 
-    Our proof is based on the framework introduced by [Regts, G. (2023). Absence of zeros implies strong spatial mixing. Probability Theory and Related Fields, 186(1), 621-641.], namely local dependence of coefficients (LDC) and a uniform bound implies SSM.
-    In order to establish LDC, we prove a division relation for the 2-spin system on general graphs.
+
 
 
 

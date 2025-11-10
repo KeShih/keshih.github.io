@@ -63,7 +63,7 @@
 <div class="row">
   <div class="intro-left" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
     <meta itemprop="representativeOfPage" content="True">
-    <img width="270" height="270" src="/files/pictures/ahh.png" style="border-radius:50%;max-width:95%" title="ahh" alt="a photo" itemprop="contentUrl"/>
+    <img width="270" height="270" src="/files/pictures/anon.jpg" style="border-radius:50%;max-width:95%" title="ahh" alt="a photo" itemprop="contentUrl"/>
   </div>
   <div class="intro-right">
     <p>
@@ -86,6 +86,73 @@
   <span>Selected Publications<br /><span style="font-size:0.6em" onclick="togglePublication()"><em><a>See all publications.</a></em></span></span> 
 </div>
 <div class="cv-non-selected row pubtypeheader">Conference Publications</div>
+  <!-- Zero-Freeness is All You Need: A Weitz-Type FPTAS for the Entire Lee–Yang Zero-Free Region  -->
+  <div class="cv-non-selected row cv-entry" id="ising-weitz">
+    <input type="checkbox" class="abstract-guard" id="ising-weitz-toggle">
+    <div class="cv-left">
+        <label class="showmore material-icons" for="ising-weitz-toggle"></label>
+        <a href="files/papers/ising-weitz.pdf"><i class="material-icons">description</i></a>
+        <i class="material-icons disabled">airplay</i>
+    </div>
+    <div class="cv-right">
+      <cite class="paper-title">Zero-Freeness is All You Need: A Weitz-Type FPTAS for the Entire Lee–Yang Zero-Free Region</cite>
+      <ul class="coauthor-list">
+        <li>
+            <a href="http://staff.ustc.edu.cn/~wwwucuc/">Shuai Shao</a></li><li>
+            <a href="https://keshi.pro/">Ke Shi</a></li></ul>
+      <p><em>
+          <abbr title="Innovations in Theoretical Computer Science">ITCS</abbr> <time>2025</time>.
+      </em><p>
+    </div>
+    <div class="abstract">
+      <p>We present a Weitz-type FPTAS for the ferromagnetic Ising model across the entire Lee–Yang zero-free region, without relying on the strong spatial mixing (SSM) property. Our algorithm is Weitz-type for two reasons. First, it expresses the partition function as a telescoping product of ratios, with the key being to approximate each ratio. Second, it uses Weitz’s self-avoiding walk tree, and truncates it at logarithmic depth to give a good and efficient approximation. The key difference from the standard Weitz algorithm is that we approximate a carefully designed edge-deletion ratio instead of the marginal probability of a vertex’s spin, ensuring our algorithm does not require SSM. <br /> Furthermore, by establishing local dependence of coefficients (LDC), we indeed prove a novel form of SSM for these edge-deletion ratios, which, in turn, implies the standard SSM for the random cluster model. This is the first SSM result for the random cluster model on general graphs, beyond lattices. We prove LDC using a new division relation, and remarkably, such relations hold quite universally. As a result, we establish LDC for a variety of models. Combined with existing zero-freeness results for these models, we derive new SSM results for them. Our work suggests that both Weitz-type FPTASes and SSM can be derived from zero-freeness, while zero-freeness alone suffices for Weitz-type FPTASes, SSM additionally requires LDC, a combinatorial property independent of zero-freeness.</p>
+    </div>
+  </div>
+  <!-- An Optimal Algorithm for the Stacker Crane Problem on Fixed Topologies  -->
+  <div class="cv-non-selected row cv-entry" id="scp">
+    <input type="checkbox" class="abstract-guard" id="scp-toggle">
+    <div class="cv-left">
+        <label class="showmore material-icons" for="scp-toggle"></label>
+        <a href="files/papers/scp.pdf"><i class="material-icons">description</i></a>
+        <i class="material-icons disabled">airplay</i>
+    </div>
+    <div class="cv-right">
+      <cite class="paper-title">An Optimal Algorithm for the Stacker Crane Problem on Fixed Topologies</cite>
+      <ul class="coauthor-list">
+        <li>
+            <a href="https://stargazer-cyk.github.io/">Yike Chen</a></li><li>
+            <a href="https://keshi.pro/">Ke Shi</a></li><li>
+            <a href="https://chaoxu.prof">Chao Xu</a></li></ul>
+      <p><em>
+          <abbr title="International Symposium on Algorithms and Computation">ISAAC</abbr> <time>2025</time>.
+      </em><p>
+    </div>
+    <div class="abstract">
+      <p>The Stacker Crane Problem (SCP) is a variant of the Traveling Salesman Problem. In SCP, pairs of pickup and delivery points are designated on a graph, and a crane must visit these points to move objects from each pickup location to its respective delivery point. The goal is to minimize the total distance traveled. SCP is known to be NP-hard, even on tree structures. The only positive results, in terms of polynomial-time solvability, apply to graphs that are topologically equivalent to a path or a cycle. We propose an algorithm that is optimal for each fixed topology, running in near-linear time. This is achieved by demonstrating that the problem is fixed-parameter tractable (FPT) when parameterized by both the cycle rank and the number of branch vertices.</p>
+    </div>
+  </div>
+  <!-- Almost optimum <span class="math">\ell</span>-covering of <span class="math">\Z_n</span>  -->
+  <div class="cv-non-selected row cv-entry" id="cyclic-cover">
+    <input type="checkbox" class="abstract-guard" id="cyclic-cover-toggle">
+    <div class="cv-left">
+        <label class="showmore material-icons" for="cyclic-cover-toggle"></label>
+        <a href="files/papers/cyclic-cover.pdf"><i class="material-icons">description</i></a>
+        <i class="material-icons disabled">airplay</i>
+    </div>
+    <div class="cv-right">
+      <cite class="paper-title">Almost optimum <span class="math">\ell</span>-covering of <span class="math">\Z_n</span></cite>
+      <ul class="coauthor-list">
+        <li>
+            <a href="https://keshi.pro/">Ke Shi</a></li><li>
+            <a href="https://chaoxu.prof">Chao Xu</a></li></ul>
+      <p><em>
+          <abbr title="International Computing and Combinatorics Conference">COCOON</abbr> <time>2024</time>.
+      </em><p>
+    </div>
+    <div class="abstract">
+      <p>A subset <span class="math">B</span> of ring <span class="math">\Z_n</span> is called a <span class="math">\ell</span>-covering set if <span class="math">\{ ab \pmod n \mid 0\leq a \leq \ell, b\in B\} = \Z_n</span>. We show there exists a <span class="math">\ell</span>-covering set of <span class="math">\Z_n</span> of size <span class="math">O(\frac{n}{\ell}\log n)</span> for all <span class="math">n</span> and <span class="math">\ell</span>, and how to construct such set. We also show examples where any <span class="math">\ell</span>-covering set must have size <span class="math">\Omega(\frac{n}{\ell}\frac{\log n}{\log \log n})</span>. The proof uses a refined bound for relative totient function obtained through sieve theory, and existence of a large divisor with linear divisor sum.</p>
+    </div>
+  </div>
   <!-- A Polynomial Time Algorithm for Finding a Minimum 4-Partition of a Submodular Function  -->
   <div class="cv-selected row cv-entry" id="sub4part">
     <input type="checkbox" class="abstract-guard" id="sub4part-toggle">
@@ -110,28 +177,6 @@
     </div>
     <div class="abstract">
       <p>In this paper, we study the minimum <span class="math">k</span>-partition problem of submodular functions, i.e.,  given a finite set <span class="math">V</span> and a submodular function <span class="math">f:2^V\to \R</span>,   computing a <span class="math">k</span>-partition <span class="math"> \{ V_1, \ldots, V_k \}</span> of <span class="math">V</span>  with minimum <span class="math">\sum_{i=1}^k f(V_i)</span>.   The problem is a natural generalization of the minimum <span class="math">k</span>-cut problem in graphs and hypergraphs.  It is known that the problem is NP-hard for general <span class="math">k</span>, and solvable in polynomial time for <span class="math">k \leq 3</span>.   In this paper, we construct the first polynomial-time algorithm for the minimum <span class="math">4</span>-partition problem.</p>
-    </div>
-  </div>
-  <!-- Almost optimum <span class="math">\ell</span>-covering of <span class="math">\Z_n</span>  -->
-  <div class="cv-non-selected row cv-entry" id="cyclic-cover">
-    <input type="checkbox" class="abstract-guard" id="cyclic-cover-toggle">
-    <div class="cv-left">
-        <label class="showmore material-icons" for="cyclic-cover-toggle"></label>
-        <a href="files/papers/cyclic-cover.pdf"><i class="material-icons">description</i></a>
-        <i class="material-icons disabled">airplay</i>
-    </div>
-    <div class="cv-right">
-      <cite class="paper-title">Almost optimum <span class="math">\ell</span>-covering of <span class="math">\Z_n</span></cite>
-      <ul class="coauthor-list">
-        <li>
-            <a href="https://keshi.pro/">Ke Shi</a></li><li>
-            <a href="https://chaoxu.prof">Chao Xu</a></li></ul>
-      <p><em>
-          <abbr title="International Computing and Combinatorics Conference">COCOON</abbr> <time>2024</time>.
-      </em><p>
-    </div>
-    <div class="abstract">
-      <p>A subset <span class="math">B</span> of ring <span class="math">\Z_n</span> is called a <span class="math">\ell</span>-covering set if <span class="math">\{ ab \pmod n \mid 0\leq a \leq \ell, b\in B\} = \Z_n</span>. We show there exists a <span class="math">\ell</span>-covering set of <span class="math">\Z_n</span> of size <span class="math">O(\frac{n}{\ell}\log n)</span> for all <span class="math">n</span> and <span class="math">\ell</span>, and how to construct such set. We also show examples where any <span class="math">\ell</span>-covering set must have size <span class="math">\Omega(\frac{n}{\ell}\frac{\log n}{\log \log n})</span>. The proof uses a refined bound for relative totient function obtained through sieve theory, and existence of a large divisor with linear divisor sum.</p>
     </div>
   </div>
 <div class="cv-non-selected row pubtypeheader">Journal Publications</div>
@@ -182,51 +227,6 @@
     </div>
     <div class="abstract">
       <p>We study the connections between strong spatial mixing and zero-freeness, the two main notions used to devise deterministic approximation algorithms for counting problems.  Following a recent framework introduced by [Regts, G. (2023). Absence of zeros implies strong spatial mixing. Probability Theory and Related Fields, 186(1), 621-641.] for the vertex model, we show that the implication from zero-freeness of the partition function to strong spatial mixing also works for the matching polynomial, a typical counting problem in the edge model.   Based on Heilmann and Lieb's results, a zero-free region <span class="math">C_\Delta=\C \backslash (-\infty,-\frac{1}{4(\Delta-1)}]</span> of the partition function and a Christoffel--Darboux type identity, we give a very simple proof for strong spatial mixing of the matching polynomial on graphs of degree bounded by <span class="math">\Delta</span> with any complex edge parameter <span class="math">z \in C_\Delta</span>. This proof does not rely on the tree recursion which is commonly used  for proving strong spatial mixing in previous results.</p>
-    </div>
-  </div>
-  <!-- Strong Spatial Mixing for Ferromagnetic Ising Models: A Novel Perspective from Edge Activity  -->
-  <div class="cv-non-selected row cv-entry" id="ising-edge-ssm">
-    <input type="checkbox" class="abstract-guard" id="ising-edge-ssm-toggle">
-    <div class="cv-left">
-        <label class="showmore material-icons" for="ising-edge-ssm-toggle"></label>
-        <a href="files/papers/ising-edge-ssm.pdf"><i class="material-icons">description</i></a>
-        <i class="material-icons disabled">airplay</i>
-    </div>
-    <div class="cv-right">
-      <cite class="paper-title">Strong Spatial Mixing for Ferromagnetic Ising Models: A Novel Perspective from Edge Activity</cite>
-      <ul class="coauthor-list">
-        <li>
-            <a href="http://staff.ustc.edu.cn/~wwwucuc/">Shuai Shao</a></li><li>
-            <a href="https://keshi.pro/">Ke Shi</a></li></ul>
-      <p><em>
-        2024, Submitted.
-      </em><p>
-    </div>
-    <div class="abstract">
-      <p>We prove a totally novel form of strong spatial mixing (SSM) for the ferromagnetic Ising model in terms of edge activities.  This SSM property holds for the entire zero-free region of Lee--Yang Theorem, i.e., <span class="math">\beta>1</span> and <span class="math">|\lambda|<1</span> or symmetrically <span class="math">|\lambda|>1</span>.  We also prove a form of SSM in terms of external fields in a smaller region <span class="math">\beta>1</span> and <span class="math">|\lambda|<1/\beta</span> or symmetrically <span class="math">|\lambda|>\beta</span>.  These SSM properties can be exploited to devise FPTASes via Weitz's and Barvinok's algorithms.  Our proof is based on the framework introduced by [Regts, G. (2023). Absence of zeros implies strong spatial mixing. Probability Theory and Related Fields, 186(1), 621-641.], namely local dependence of coefficients (LDC) and a uniform bound implies SSM. In order to establish LDC, we prove a division relation for the 2-spin system on general graphs.</p>
-    </div>
-  </div>
-  <!-- An Optimal Algorithm for the Stacker Crane Problem on Fixed Topologies  -->
-  <div class="cv-non-selected row cv-entry" id="scp">
-    <input type="checkbox" class="abstract-guard" id="scp-toggle">
-    <div class="cv-left">
-        <label class="showmore material-icons" for="scp-toggle"></label>
-        <a href="files/papers/scp.pdf"><i class="material-icons">description</i></a>
-        <i class="material-icons disabled">airplay</i>
-    </div>
-    <div class="cv-right">
-      <cite class="paper-title">An Optimal Algorithm for the Stacker Crane Problem on Fixed Topologies</cite>
-      <ul class="coauthor-list">
-        <li>
-            <a href="https://stargazer-cyk.github.io/">Yike Chen</a></li><li>
-            <a href="https://keshi.pro/">Ke Shi</a></li><li>
-            <a href="https://chaoxu.prof">Chao Xu</a></li></ul>
-      <p><em>
-        2024, Submitted.
-      </em><p>
-    </div>
-    <div class="abstract">
-      <p>The Stacker Crane Problem (SCP) is a variant of the Traveling Salesman Problem. In SCP, pairs of pickup and delivery points are designated on a graph, and a crane must visit these points to move objects from each pickup location to its respective delivery point. The goal is to minimize the total distance traveled. SCP is known to be NP-hard, even on tree structures. The only positive results, in terms of polynomial-time solvability, apply to graphs that are topologically equivalent to a path or a cycle. We propose an algorithm that is optimal for each fixed topology, running in near-linear time. This is achieved by demonstrating that the problem is fixed-parameter tractable (FPT) when parameterized by both the cycle rank and the number of branch vertices.</p>
     </div>
   </div>
 </div>
