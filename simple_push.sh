@@ -26,7 +26,9 @@ rm -r drafts
 
 # push master to remote
 touch .nojekyll
-git add . && git commit -m "update" && git push
+git add .
+git commit -m "update"
+git push
 
 # return to develop branch
 git checkout develop
