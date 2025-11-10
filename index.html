@@ -86,6 +86,28 @@
   <span>Selected Publications<br /><span style="font-size:0.6em" onclick="togglePublication()"><em><a>See all publications.</a></em></span></span> 
 </div>
 <div class="cv-non-selected row pubtypeheader">Conference Publications</div>
+  <!-- Zero-Freeness is All You Need: A Weitz-Type FPTAS for the Entire Lee–Yang Zero-Free Region  -->
+  <div class="cv-non-selected row cv-entry" id="ising-weitz">
+    <input type="checkbox" class="abstract-guard" id="ising-weitz-toggle">
+    <div class="cv-left">
+        <label class="showmore material-icons" for="ising-weitz-toggle"></label>
+        <a href="files/papers/ising-weitz.pdf"><i class="material-icons">description</i></a>
+        <i class="material-icons disabled">airplay</i>
+    </div>
+    <div class="cv-right">
+      <cite class="paper-title">Zero-Freeness is All You Need: A Weitz-Type FPTAS for the Entire Lee–Yang Zero-Free Region</cite>
+      <ul class="coauthor-list">
+        <li>
+            <a href="http://staff.ustc.edu.cn/~wwwucuc/">Shuai Shao</a></li><li>
+            <a href="https://keshi.pro/">Ke Shi</a></li></ul>
+      <p><em>
+          <abbr title="Innovations in Theoretical Computer Science">ITCS</abbr> <time>2025</time>.
+      </em><p>
+    </div>
+    <div class="abstract">
+      <p>We present a Weitz-type FPTAS for the ferromagnetic Ising model across the entire Lee–Yang zero-free region, without relying on the strong spatial mixing (SSM) property. Our algorithm is Weitz-type for two reasons. First, it expresses the partition function as a telescoping product of ratios, with the key being to approximate each ratio. Second, it uses Weitz’s self-avoiding walk tree, and truncates it at logarithmic depth to give a good and efficient approximation. The key difference from the standard Weitz algorithm is that we approximate a carefully designed edge-deletion ratio instead of the marginal probability of a vertex’s spin, ensuring our algorithm does not require SSM. <br /> Furthermore, by establishing local dependence of coefficients (LDC), we indeed prove a novel form of SSM for these edge-deletion ratios, which, in turn, implies the standard SSM for the random cluster model. This is the first SSM result for the random cluster model on general graphs, beyond lattices. We prove LDC using a new division relation, and remarkably, such relations hold quite universally. As a result, we establish LDC for a variety of models. Combined with existing zero-freeness results for these models, we derive new SSM results for them. Our work suggests that both Weitz-type FPTASes and SSM can be derived from zero-freeness, while zero-freeness alone suffices for Weitz-type FPTASes, SSM additionally requires LDC, a combinatorial property independent of zero-freeness.</p>
+    </div>
+  </div>
   <!-- An Optimal Algorithm for the Stacker Crane Problem on Fixed Topologies  -->
   <div class="cv-non-selected row cv-entry" id="scp">
     <input type="checkbox" class="abstract-guard" id="scp-toggle">
@@ -200,33 +222,11 @@
             <a href="http://staff.ustc.edu.cn/~wwwucuc/">Shuai Shao</a></li><li>
             <a href="https://keshi.pro/">Ke Shi</a></li></ul>
       <p><em>
-        2024, Submitted.
+        2025, Submitted.
       </em><p>
     </div>
     <div class="abstract">
       <p>We study the connections between strong spatial mixing and zero-freeness, the two main notions used to devise deterministic approximation algorithms for counting problems.  Following a recent framework introduced by [Regts, G. (2023). Absence of zeros implies strong spatial mixing. Probability Theory and Related Fields, 186(1), 621-641.] for the vertex model, we show that the implication from zero-freeness of the partition function to strong spatial mixing also works for the matching polynomial, a typical counting problem in the edge model.   Based on Heilmann and Lieb's results, a zero-free region <span class="math">C_\Delta=\C \backslash (-\infty,-\frac{1}{4(\Delta-1)}]</span> of the partition function and a Christoffel--Darboux type identity, we give a very simple proof for strong spatial mixing of the matching polynomial on graphs of degree bounded by <span class="math">\Delta</span> with any complex edge parameter <span class="math">z \in C_\Delta</span>. This proof does not rely on the tree recursion which is commonly used  for proving strong spatial mixing in previous results.</p>
-    </div>
-  </div>
-  <!-- Strong Spatial Mixing for Ferromagnetic Ising Models: A Novel Perspective from Edge Activity  -->
-  <div class="cv-non-selected row cv-entry" id="ising-edge-ssm">
-    <input type="checkbox" class="abstract-guard" id="ising-edge-ssm-toggle">
-    <div class="cv-left">
-        <label class="showmore material-icons" for="ising-edge-ssm-toggle"></label>
-        <a href="files/papers/ising-edge-ssm.pdf"><i class="material-icons">description</i></a>
-        <i class="material-icons disabled">airplay</i>
-    </div>
-    <div class="cv-right">
-      <cite class="paper-title">Strong Spatial Mixing for Ferromagnetic Ising Models: A Novel Perspective from Edge Activity</cite>
-      <ul class="coauthor-list">
-        <li>
-            <a href="http://staff.ustc.edu.cn/~wwwucuc/">Shuai Shao</a></li><li>
-            <a href="https://keshi.pro/">Ke Shi</a></li></ul>
-      <p><em>
-        2024, Submitted.
-      </em><p>
-    </div>
-    <div class="abstract">
-      <p>We prove a totally novel form of strong spatial mixing (SSM) for the ferromagnetic Ising model in terms of edge activities.  This SSM property holds for the entire zero-free region of Lee--Yang Theorem, i.e., <span class="math">\beta>1</span> and <span class="math">|\lambda|<1</span> or symmetrically <span class="math">|\lambda|>1</span>.  We also prove a form of SSM in terms of external fields in a smaller region <span class="math">\beta>1</span> and <span class="math">|\lambda|<1/\beta</span> or symmetrically <span class="math">|\lambda|>\beta</span>.  These SSM properties can be exploited to devise FPTASes via Weitz's and Barvinok's algorithms.  Our proof is based on the framework introduced by [Regts, G. (2023). Absence of zeros implies strong spatial mixing. Probability Theory and Related Fields, 186(1), 621-641.], namely local dependence of coefficients (LDC) and a uniform bound implies SSM. In order to establish LDC, we prove a division relation for the 2-spin system on general graphs.</p>
     </div>
   </div>
 </div>
