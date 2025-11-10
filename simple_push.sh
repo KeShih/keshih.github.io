@@ -4,7 +4,9 @@
 git checkout develop
 
 # push dev to remote
-git add . && git commit -m "update" && git push
+git add . 
+git commit -m "update"
+git push
 
 # compile katex-cli
 if [ ! -f target/release/katex_cli ]; then
