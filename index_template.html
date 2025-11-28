@@ -1,171 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <title>Ke Shi</title>
-  <meta name="description" content="The personal webpage of Ke Shi.">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css" crossorigin="anonymous">
-  <!-- Do not remove katex render. Index page is a idpage --> 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Ke Shi</title>
+    <meta name="description" content="The personal webpage of Ke Shi." />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"
+      crossorigin="anonymous"
+    />
+    <!-- Do not remove katex render. Index page is a idpage -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"
+      integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC"
+      crossorigin="anonymous"
+    />
 
     <!-- The loading of KaTeX is deferred to speed up page rendering -->
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"
+      integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja"
+      crossorigin="anonymous"
+    ></script>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      var macros={
-              "\\C":"\\mathbb{C}",
-              "\\F":"\\mathbb{F}",
-              "\\e": "\\varepsilon",
-              "\\eps": "\\varepsilon",
-              "\\mex": "\\mathop{\\operatorname{mex}}",
-              "\\lcm": "\\mathop{\\operatorname{lcm}}",
-              "\\dist": "\\mathop{\\operatorname{dist}}",
-              "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
-              "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
-              '\\set':'\\left\\{ #1 \\right\\}',
-              '\\floor':'\\left\\lfloor #1 \\right\\rfloor',
-              '\\ceil':'\\left\\lceil #1 \\right\\rceil',
-              '\\abs':'\\left\\| #1 \\right\\|'
-              }
-    var mathElements = document.getElementsByClassName("math");
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") { katex.render(texText.data, mathElements[i], { displayMode: mathElements[i].classList.contains("display"), throwOnError: false, macros:macros} );
-    }}});
-  </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var macros = {
+          "\\C": "\\mathbb{C}",
+          "\\F": "\\mathbb{F}",
+          "\\e": "\\varepsilon",
+          "\\eps": "\\varepsilon",
+          "\\mex": "\\mathop{\\operatorname{mex}}",
+          "\\lcm": "\\mathop{\\operatorname{lcm}}",
+          "\\dist": "\\mathop{\\operatorname{dist}}",
+          "\\bigtriangleright": "{\\mathop{\\Large \\triangleright}}",
+          "\\bigtriangleleft": "{\\mathop{\\Large \\triangleleft}}",
+          "\\set": "\\left\\{ #1 \\right\\}",
+          "\\floor": "\\left\\lfloor #1 \\right\\rfloor",
+          "\\ceil": "\\left\\lceil #1 \\right\\rceil",
+          "\\abs": "\\left\\| #1 \\right\\|",
+        };
+        var mathElements = document.getElementsByClassName("math");
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains("display"),
+              throwOnError: false,
+              macros: macros,
+            });
+          }
+        }
+      });
+    </script>
 
-  <!-- toggle selected publications -->
-  <script>
-    function togglePublication() {
-      var x = document.getElementsByClassName("cv-non-selected");
-      for (var i = x.length - 1; i >= 0; --i)
-        x[i].classList.remove("cv-non-selected");
-      x = document.getElementById("pub-toggle");
-      x.style.display = "none";
-    }
-  </script>
+    <!-- toggle selected publications -->
+    <script>
+      function togglePublication() {
+        var x = document.getElementsByClassName("cv-non-selected");
+        for (var i = x.length - 1; i >= 0; --i)
+          x[i].classList.remove("cv-non-selected");
+        x = document.getElementById("pub-toggle");
+        x.style.display = "none";
+      }
+    </script>
 
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="shortcut icon" type="image/x-icon" href="/files/pictures/terminal.512.png" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="/files/pictures/terminal.512.png"
+    />
 
-  <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous">
-  <link rel="stylesheet" href="/css/homepage.css?v=20220803" crossorigin="anonymous">
-  
-</head>
-<body onload="togglePublication()">
-<div class="container">
-
-<div class="person" itemscope="" itemtype="http://schema.org/Person">
-    <meta itemprop="gender" content="Male">
-    <!-- <meta itemprop="birthDate" content="September 12, 1989">
+    <link rel="stylesheet" href="/css/default.css" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="/css/homepage.css?v=20220803"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body onload="togglePublication()">
+    <div class="container">
+      <div class="person" itemscope="" itemtype="http://schema.org/Person">
+        <meta itemprop="gender" content="Male" />
+        <!-- <meta itemprop="birthDate" content="September 12, 1989">
     <meta itemprop="honorificPrefix" content="Dr">
     <meta itemprop="honorificSuffix" content="PhD"> -->
-    <meta itemprop="url" content="https://keshi.pro">
-<div class="row" style="display:block"><h1 id="site-title"><span itemprop="givenName">Ke</span> <span itemprop="familyName">Shi</span> <wbr>|<wbr> 
-  <ruby><rb>史</rb><rp>(</rp><rt>shǐ</rt><rp>)</rp></ruby>
-  <ruby><rb>可</rb><rp>(</rp><rt>kě</rt><rp>)</rp></ruby>
-</h1></div>
+        <meta itemprop="url" content="https://keshi.pro" />
+        <div class="row" style="display: block">
+          <h1 id="site-title">
+            <span itemprop="givenName">Ke</span>
+            <span itemprop="familyName">Shi</span> <wbr />|<wbr />
+            <ruby><rb>史</rb><rp>(</rp><rt>shǐ</rt><rp>)</rp></ruby>
+            <ruby><rb>可</rb><rp>(</rp><rt>kě</rt><rp>)</rp></ruby>
+          </h1>
+        </div>
 
-<div class="row">
-  <div class="intro-left" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-    <meta itemprop="representativeOfPage" content="True">
-    <img width="270" height="270" src="/files/pictures/anon.jpg" style="border-radius:50%;max-width:95%" title="ahh" alt="a photo" itemprop="contentUrl"/>
-  </div>
-  <div class="intro-right">
-    <p>
-      I am a Master's student at <a href="https://ustc.edu/">USTC</a>, currently under the guidance of <a href="http://staff.ustc.edu.cn/~wwwucuc/">Shuai Shao</a>.
-    </p>
-    <p>  
-      Prior to this, I earned my Bachelor's degree in Computer Science from <a href="https://www.uestc.edu.cn/">UESTC</a> while conducting theoretical computer science research under the guidance of <a href="https://chaoxu.prof">Chao Xu</a>.
-    </p>
-    <p>
-      My research interests revolve around algorithms and combinatorial optimization. Recently, my focus has been directed towards approximate counting algorithms and their correlations with the phenomenon of phase transitions in statistical physics.
-      Here is my <a href="files/CV-en.pdf"> CV  </a> .
-      <!-- You can find my CV <a href="files/cv.pdf">here</a> -->
-   </p>
+        <div class="row">
+          <div
+            class="intro-left"
+            itemprop="image"
+            itemscope
+            itemtype="http://schema.org/ImageObject"
+          >
+            <meta itemprop="representativeOfPage" content="True" />
+            <img
+              width="270"
+              height="270"
+              src="/files/pictures/anon.jpg"
+              style="border-radius: 50%; max-width: 95%"
+              title="ahh"
+              alt="a photo"
+              itemprop="contentUrl"
+            />
+          </div>
+          <div class="intro-right">
+            <p>
+              I am a Master's student at <a href="https://ustc.edu/">USTC</a>,
+              currently under the guidance of
+              <a href="http://staff.ustc.edu.cn/~wwwucuc/">Shuai Shao</a>.
+            </p>
+            <p>
+              Prior to this, I earned my Bachelor's degree in Computer Science
+              from <a href="https://www.uestc.edu.cn/">UESTC</a> while
+              conducting theoretical computer science research under the
+              guidance of <a href="https://chaoxu.prof">Chao Xu</a>.
+            </p>
+            <p>
+              My research interests revolve around algorithms and combinatorial
+              optimization. Recently, my focus has been directed towards
+              approximate counting algorithms and their correlations with the
+              phenomenon of phase transitions in statistical physics. Here is my
+              <a href="files/CV-en.pdf"> CV </a> .
+              <!-- You can find my CV <a href="files/cv.pdf">here</a> -->
+            </p>
 
-    <p>You can contact me through email <a href="mailto:self.ke.shi@gmail.com"><samp itemprop="email">self.ke.shi@gmail.com</samp></a> or
-      <a href="mailto:ke.shi@ustc.edu"><samp itemprop="email">ke.shi@ustc.edu</samp></a>.</p>
+            <p>
+              You can contact me through email
+              <a href="mailto:self.ke.shi@gmail.com"
+                ><samp itemprop="email">self.ke.shi@gmail.com</samp></a
+              >
+              or
+              <a href="mailto:@ustc.edu"
+                ><samp itemprop="email">ke.shi@ustc.edu</samp></a
+              >.
+            </p>
+          </div>
+        </div>
+      </div>
 
-  </div>
-</div>
-</div>
+      <div class="row pubtypeheader" id="pub-toggle">
+        <span
+          >Selected Publications<br /><span
+            style="font-size: 0.6em"
+            onclick="togglePublication()"
+            ><em><a>See all publications.</a></em></span
+          ></span
+        >
+      </div>
 
+      {% for pub_type in pub_types %}
+      <div class="cv-non-selected row pubtypeheader">{{pub_type.title}}</div>
+      {% for paper in pub_type.papers %}
+      <!-- {{paper.title}}  -->
+      <div class="{{paper.selected}} row cv-entry" id="{{paper.id}}">
+        <input
+          type="checkbox"
+          class="abstract-guard"
+          id="{{paper.id}}-toggle"
+        />
+        <div class="cv-left">
+          {% if 'a' in paper.show %}
+          <label
+            class="showmore material-icons"
+            for="{{paper.id}}-toggle"
+          ></label>
+          {% else %}
+          <i class="material-icons disabled">expand_more</i>
+          {% endif %} {% if 'd' in paper.show %}
+          <a href="files/papers/{{paper.id}}.pdf"
+            ><i class="material-icons">description</i></a
+          >
+          {% else %}
+          <i class="material-icons disabled">description</i>
+          {% endif %} {% if 'p' in paper.show %}
+          <a href="files/presentations/{{paper.id}}.pdf"
+            ><i class="material-icons">airplay</i></a
+          >
+          {% else %}
+          <i class="material-icons disabled">airplay</i>
+          {% endif %}
+        </div>
 
-<div class="row pubtypeheader" id="pub-toggle">
-  <span>Selected Publications<br /><span style="font-size:0.6em" onclick="togglePublication()"><em><a>See all publications.</a></em></span></span> 
-</div>
+        <div class="cv-right">
+          <cite class="paper-title">{{paper.title}}</cite>
+          {% if paper.authors %}
+          <ul class="coauthor-list">
+            {% for author in paper.authors %}
+            <li>
+              {% if author.link %}<a href="{{author.link}}">{{author.name}}</a
+              >{% else %}{{author.name}}{% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
 
-{% for pub_type in pub_types %}
-<div class="cv-non-selected row pubtypeheader">{{pub_type.title}}</div>
-  {% for paper in pub_type.papers %}
-  <!-- {{paper.title}}  -->
-  <div class="{{paper.selected}} row cv-entry" id="{{paper.id}}">
-    <input type="checkbox" class="abstract-guard" id="{{paper.id}}-toggle">
-    <div class="cv-left">
-      {% if 'a' in paper.show %}
-        <label class="showmore material-icons" for="{{paper.id}}-toggle"></label>
-      {% else %}
-        <i class="material-icons disabled">expand_more</i>
-      {% endif %}
+          <p>
+            <em>
+              {% if paper.bib %} {{paper.bib}} {% elif paper.pub %} {% if
+              pub_type.title == "Journal Publications" %} {{paper.pub.venue}}
+              <time>{{paper.year}}</time>. {% else %}
+              <abbr title="{{paper.pub.venue}}">{{paper.pub.name}}</abbr>
+              <time>{{paper.year}}</time>. {% endif %} {% else %}
+              <time>{{paper.year}}</time>. {% endif %}
+            </em>
+          </p>
 
-      {% if 'd' in paper.show %}
-        <a href="files/papers/{{paper.id}}.pdf"><i class="material-icons">description</i></a>
-      {% else %}
-        <i class="material-icons disabled">description</i>
-      {% endif %}
+          <p>{% for note in paper.notes %}</p>
 
-      {% if 'p' in paper.show %}
-        <a href="files/presentations/{{paper.id}}.pdf"><i class="material-icons">airplay</i></a>
-      {% else %}
-        <i class="material-icons disabled">airplay</i>
-      {% endif %}
-    </div>
+          <aside class="cv-non-selected note">{{note}}</aside>
+          {% endfor %}
+        </div>
 
-    <div class="cv-right">
-      <cite class="paper-title">{{paper.title}}</cite>
-      {% if paper.authors %}
-      <ul class="coauthor-list">
-        {% for author in paper.authors %}<li>
-            {% if author.link %}<a href="{{author.link}}">{{author.name}}</a>{% else %}{{author.name}}{% endif %}</li>{% endfor %}</ul>
-      {% endif %}
-
-      <p><em>
-      {% if paper.bib %}
-        {{paper.bib}}
-      {% elif paper.pub %}
-        {% if pub_type.title == "Journal Publications" %}
-          {{paper.pub.venue}} <time>{{paper.year}}</time>.
-        {% else %}
-          <abbr title="{{paper.pub.venue}}">{{paper.pub.name}}</abbr> <time>{{paper.year}}</time>.
+        {% if paper.abstract %}
+        <div class="abstract">
+          {{paper.abstract}} {% if paper.dedication %}
+          <aside class="dedication">{{paper.dedication}}</aside>
+          {% endif %}
+        </div>
         {% endif %}
-      {% else %}
-        <time>{{paper.year}}</time>.
-      {% endif %}
-      </em><p>
-
-      {% for note in paper.notes %}
-        <aside class="cv-non-selected note">{{note}}</aside>
-      {% endfor %}
+      </div>
+      {% endfor %} {% endfor %}
     </div>
-
-    {% if paper.abstract %}
-    <div class="abstract">
-      {{paper.abstract}}
-      {% if paper.dedication %}
-        <aside class="dedication">{{paper.dedication}}</aside>
-      {% endif %}
-    </div>
-    {% endif %}
-
-  </div>
-  {% endfor %}
-{% endfor %}
-
-
-</div>
-</body>
+  </body>
 </html>
