@@ -8,8 +8,14 @@
   xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
 >
   <url>
-    <loc>https://keshi.pro/</loc>
-    <changefreq>daily</changefreq>
+    <loc>https://keshi.pro</loc>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <!-- <url>
+    <loc>https://chaoxu.prof/blog.html</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url> -->
+<!--  -->
 </urlset>
