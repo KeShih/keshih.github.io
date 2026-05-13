@@ -16,6 +16,7 @@ people:
   Kazuhisa Makino: https://www.kurims.kyoto-u.ac.jp/en/list/makino.html
   Shuai Shao: http://staff.ustc.edu.cn/~wwwucuc/
   Yike Chen: https://stargazer-cyk.github.io/
+  Yuan Chen:
 
 types:
   conference: Conference Publications
@@ -134,10 +135,20 @@ type: manuscript
 year: 2025
 bib: 2025, Submitted.
 abstract: >
-    We study the connections between strong spatial mixing and zero-freeness, the two main notions used to devise deterministic approximation algorithms for counting problems. 
-    Following a recent framework introduced by [Regts, G. (2023). Absence of zeros implies strong spatial mixing. Probability Theory and Related Fields, 186(1), 621-641.] for the vertex model, we show that the implication from zero-freeness of the partition function to strong spatial mixing also works for the matching polynomial, a typical counting problem in the edge model.  
+    We study the connections between strong spatial mixing and zero-freeness, the two main notions used to devise deterministic approximation algorithms for counting problems.
+    Following a recent framework introduced by [Regts, G. (2023). Absence of zeros implies strong spatial mixing. Probability Theory and Related Fields, 186(1), 621-641.] for the vertex model, we show that the implication from zero-freeness of the partition function to strong spatial mixing also works for the matching polynomial, a typical counting problem in the edge model.
     Based on Heilmann and Lieb's results, a zero-free region $C_\Delta=\C \backslash (-\infty,-\frac{1}{4(\Delta-1)}]$ of the partition function and a Christoffel--Darboux type identity, we give a very simple proof for strong spatial mixing of the matching polynomial on graphs of degree bounded by $\Delta$ with any complex edge parameter $z \in C_\Delta$.
     This proof does not rely on the tree recursion which is commonly used  for proving strong spatial mixing in previous results.
+
+---
+id: hardcore-cc
+title: "Zero-Freeness of the Hard-Core Model with Bounded Connective Constant"
+authors: [Yuan Chen, Shuai Shao, Ke Shi]
+type: manuscript
+year: 2026
+bib: 2026, Submitted.
+abstract: >
+    We investigate zero-free regions of the partition function of the hard-core model on finite graphs and their implications for the analyticity of free energy on infinite lattices. Classical results establish zero-freeness up to the tree uniqueness threshold based on maximum degree, but the connective constant offers a tighter structural measure for graphs like regular lattices. We bridge this gap by defining the connective constant for finite graphs via a lower bound on the number of self-avoiding walks. We prove zero-freeness in a complex neighborhood for graph families with lower connective constant $\mu$ when $\lambda < \lambda_c(\mu)$, establishing uniqueness and analyticity of the free energy density for infinite lattices beyond maximum-degree bounds. The proof uses a block contraction technique that lifts the correlation decay property from a real interval to a strip-like complex neighborhood.
 
 
 
