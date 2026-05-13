@@ -1,0 +1,11 @@
+---
+title: 中文博客
+layout: layouts/cndefault.njk
+permalink: /cnblog.html
+---
+<table class="postindex">
+{% for post in collections.cnposts %}
+  {% set post = post %}
+  {% include "partials/post-item.njk" %}
+{% endfor %}
+</table>

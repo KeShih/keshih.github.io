@@ -1,0 +1,11 @@
+---
+layout: layouts/default.njk
+---
+<br />
+<div>
+{{ content | safe }}
+</div>
+<div class="hide-on-print">
+    <div class="info">Posted by <a href="https://chaoxu.prof">Chao Xu</a> on <time datetime="{{ page.date | dateFormat }}">{{ page.date | dateFormat }}</time>. </div>
+    <div class="info">Tags: {{ tags }}.</div>
+</div>

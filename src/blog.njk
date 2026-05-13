@@ -1,0 +1,11 @@
+---
+title: Posts
+layout: layouts/default.njk
+permalink: /blog.html
+---
+<table class="postindex">
+{% for post in collections.posts %}
+  {% set post = post %}
+  {% include "partials/post-item.njk" %}
+{% endfor %}
+</table>

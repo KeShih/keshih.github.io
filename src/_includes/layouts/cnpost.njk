@@ -1,0 +1,11 @@
+---
+layout: layouts/cndefault.njk
+---
+<br />
+<div>
+{{ content | safe }}
+</div>
+<div class="hide-on-print">
+    <div class="info"><a href="https://keshi.pro">史可</a>与<time datetime="{{ page.date | dateFormat }}">{{ page.date | dateFormat }}</time>发布</div>
+    <div class="info">标签: {{ tags }}</div>
+</div>

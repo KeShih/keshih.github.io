@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -rl '\\\\$.*\\\\$' /Users/keshi/Code/Git/keshih.github.io/posts/ /Users/keshi/Code/Git/keshih.github.io/cnposts/ /Users/keshi/Code/Git/keshih.github.io/pages/ /Users/keshi/Code/Git/keshih.github.io/drafts/)",
+      "Bash(git *)",
+      "Bash(awk '{print $1}')",
+      "Bash(xargs -I{} git -C /Users/keshi/Code/Git/keshih.github.io show {} --name-only -- \"posts/*.md\")",
+      "Bash(xargs -I{} git -C /Users/keshi/Code/Git/keshih.github.io ls-tree --name-only -r {} -- posts/)",
+      "Bash(xargs -I{} git -C /Users/keshi/Code/Git/keshih.github.io ls-tree --name-only -r {}~1 -- posts/)",
+      "Bash(xargs -I{} git -C /Users/keshi/Code/Git/keshih.github.io ls-tree --name-only -r {} -- posts/ cnposts/)",
+      "Bash(xargs -I{} sh -c 'git -C /Users/keshi/Code/Git/keshih.github.io show 14d8a20~1:{} 2>/dev/null | grep -l \"title=\" 2>/dev/null && echo {}')",
+      "Bash(xargs -I{} git -C /Users/keshi/Code/Git/keshih.github.io grep -l 'title=' {}~1 -- \"posts/*.md\")",
+      "Bash(npm install *)",
+      "Bash(mv posts/* src/posts/)",
+      "Bash(mv cnposts/* src/cnposts/)",
+      "Bash(mv pages/* src/pages/)",
+      "Bash(npx eleventy *)",
+      "Bash(npm run *)"
+    ]
+  }
+}
