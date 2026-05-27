@@ -12,4 +12,6 @@ npm run build   # output to _site/
 
 ## Deployment
 
-Pushes to `develop` trigger a GitHub Actions workflow that builds and deploys to GitHub Pages via `actions/deploy-pages`.
+GitHub Pages is deployed by the workflow in `.github/workflows/deploy.yml`. Pushes to `develop` trigger the workflow, which builds `_site/` and publishes it with `actions/deploy-pages`.
+
+The `master` branch is not the current deployment source; pushing only to `master` will not deploy the site unless the workflow trigger is changed.
