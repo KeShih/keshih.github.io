@@ -142,6 +142,7 @@ abstract: >
 
 ---
 id: hardcore-cc
+show: [d]
 title: "Zero-Freeness of the Hard-Core Model with Bounded Connective Constant"
 authors: [Yuan Chen, Shuai Shao, Ke Shi]
 type: manuscript
