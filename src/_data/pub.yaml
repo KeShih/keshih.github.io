@@ -17,6 +17,7 @@ people:
   Shuai Shao: http://staff.ustc.edu.cn/~wwwucuc/
   Yike Chen: https://stargazer-cyk.github.io/
   Yuan Chen:
+  Jincheng Guan:
 
 types:
   conference: Conference Publications
@@ -150,6 +151,19 @@ year: 2026
 bib: 2026, Submitted.
 abstract: >
     We investigate zero-free regions of the partition function of the hard-core model on finite graphs and their implications for the analyticity of free energy on infinite lattices. Classical results establish zero-freeness up to the tree uniqueness threshold based on maximum degree, but the connective constant offers a tighter structural measure for graphs like regular lattices. We bridge this gap by defining the connective constant for finite graphs via a lower bound on the number of self-avoiding walks. We prove zero-freeness in a complex neighborhood for graph families with lower connective constant $\mu$ when $\lambda < \lambda_c(\mu)$, establishing uniqueness and analyticity of the free energy density for infinite lattices beyond maximum-degree bounds. The proof uses a block contraction technique that lifts the correlation decay property from a real interval to a strip-like complex neighborhood.
+
+---
+id: eo-lp
+show: [d]
+title: "An LP Algorithm for Counting Eulerian Orientations Through the Lens of Quasi-polymorphism"
+authors: [Jincheng Guan, Shuai Shao, Ke Shi]
+type: manuscript
+year: 2026
+bib: 2026, Manuscript.
+abstract: >
+    The counting weighted Eulerian orientation problem $\#\mathrm{EO}$ is a central obstruction in the classification of complex-valued Boolean Holant problems. A recent result gave an $\mathrm{FP}^{\mathrm{NP}}$ versus $\#\mathrm P$-hard dichotomy for $\#\mathrm{EO}$. Its tractable side is described by quasi-polymorphisms, namely one-sided ternary XOR polymorphism conditions, together with membership in one of two tractable pairing classes.
+    <br />
+    We remove the NP oracle from the tractable side. For every signature set satisfying these conditions, we give a deterministic polynomial-time algorithm. The algorithm solves a natural linear program, extracts at each vertex a local candidate set, and shows that the LP constraints upgrade the quasi-polymorphism condition into full ternary XOR polymorphism on these candidate sets. This yields affine local structure, from which the instance reduces to a tractable Boolean $\#\mathrm{CSP}$. Hence $\#\mathrm{EO}$ satisfies a genuine FP versus $\#\mathrm P$-hard dichotomy.
 
 
 
