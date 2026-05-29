@@ -160,6 +160,8 @@ authors: [Jincheng Guan, Shuai Shao, Ke Shi]
 type: manuscript
 year: 2026
 bib: 2026, Manuscript.
+notes:
+ - The [poster](/files/presentations/eo-lp-poster.pdf) is available.
 abstract: >
     The counting weighted Eulerian orientation problem $\#\mathrm{EO}$ is a central obstruction in the classification of complex-valued Boolean Holant problems. A recent result gave an $\mathrm{FP}^{\mathrm{NP}}$ versus $\#\mathrm P$-hard dichotomy for $\#\mathrm{EO}$. Its tractable side is described by quasi-polymorphisms, namely one-sided ternary XOR polymorphism conditions, together with membership in one of two tractable pairing classes.
     <br />
