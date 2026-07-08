@@ -1,4 +1,6 @@
-export function mathPlugin(md) {
+import type MarkdownIt from "markdown-it";
+
+export function mathPlugin(md: MarkdownIt) {
   md.inline.ruler.after("escape", "math_inline", (state, silent) => {
     if (state.src[state.pos] !== "$") return false;
     if (state.src[state.pos + 1] === "$") return false;
@@ -73,7 +75,7 @@ export function mathPlugin(md) {
   };
 }
 
-function escapeHtml(str) {
+function escapeHtml(str: string) {
   return str
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")

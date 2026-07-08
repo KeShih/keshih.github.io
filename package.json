@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "eleventy",
-    "serve": "eleventy --serve",
+    "build": "NODE_OPTIONS=\"--import tsx\" eleventy --config=eleventy.config.ts",
+    "serve": "NODE_OPTIONS=\"--import tsx\" eleventy --serve --config=eleventy.config.ts",
+    "typecheck": "tsc",
     "clean": "rm -rf _site"
   },
   "devDependencies": {
@@ -12,7 +13,12 @@
     "@citation-js/core": "^0.7.0",
     "@citation-js/plugin-bibtex": "^0.7.0",
     "@citation-js/plugin-csl": "^0.7.0",
+    "@types/js-yaml": "^4.0.9",
+    "@types/markdown-it": "^14.1.2",
+    "@types/node": "^26.1.1",
     "js-yaml": "^4.1.0",
-    "markdown-it": "^14.0.0"
+    "markdown-it": "^14.0.0",
+    "tsx": "^4.23.0",
+    "typescript": "^6.0.3"
   }
 }
