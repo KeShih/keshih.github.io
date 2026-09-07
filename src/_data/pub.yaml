@@ -18,6 +18,7 @@ people:
   Yike Chen: https://stargazer-cyk.github.io/
   Yuan Chen:
   Jincheng Guan:
+  Bohan Wang:
 
 types:
   conference: Conference Publications
@@ -42,6 +43,25 @@ types:
 # bib allow user to add extra information
 
 # conference publications
+---
+id: hardcore-cc
+show: [d]
+title: "Zero-Freeness of the Hard-Core Model with Bounded Connective Constant"
+authors: [Yuan Chen, Shuai Shao, Ke Shi]
+type: conference
+year: 2026
+pub: ISAAC
+abstract: >
+    We investigate zero-free regions of the partition function of the hard-core model on finite graphs and their implications for the analyticity of free energy on infinite lattices. Classical results establish zero-freeness up to the tree uniqueness threshold based on maximum degree, but the connective constant offers a tighter structural measure for graphs like regular lattices. We bridge this gap by defining the connective constant for finite graphs via a lower bound on the number of self-avoiding walks. We prove zero-freeness in a complex neighborhood for graph families with lower connective constant $\mu$ when $\lambda < \lambda_c(\mu)$, establishing uniqueness and analyticity of the free energy density for infinite lattices beyond maximum-degree bounds. The proof uses a block contraction technique that lifts the correlation decay property from a real interval to a strip-like complex neighborhood.
+
+---
+id: continuous-ssm
+title: "Strong Spatial Mixing for Continuous Spin Systems with Multi-Interactions"
+authors: [Shuai Shao, Ke Shi, Bohan Wang]
+type: conference
+year: 2026
+pub: ISAAC
+
 ---
 id: ising-weitz
 show: [d]
@@ -142,17 +162,6 @@ abstract: >
     This proof does not rely on the tree recursion which is commonly used  for proving strong spatial mixing in previous results.
 
 ---
-id: hardcore-cc
-show: [d]
-title: "Zero-Freeness of the Hard-Core Model with Bounded Connective Constant"
-authors: [Yuan Chen, Shuai Shao, Ke Shi]
-type: manuscript
-year: 2026
-bib: 2026, Submitted.
-abstract: >
-    We investigate zero-free regions of the partition function of the hard-core model on finite graphs and their implications for the analyticity of free energy on infinite lattices. Classical results establish zero-freeness up to the tree uniqueness threshold based on maximum degree, but the connective constant offers a tighter structural measure for graphs like regular lattices. We bridge this gap by defining the connective constant for finite graphs via a lower bound on the number of self-avoiding walks. We prove zero-freeness in a complex neighborhood for graph families with lower connective constant $\mu$ when $\lambda < \lambda_c(\mu)$, establishing uniqueness and analyticity of the free energy density for infinite lattices beyond maximum-degree bounds. The proof uses a block contraction technique that lifts the correlation decay property from a real interval to a strip-like complex neighborhood.
-
----
 id: eo-lp
 show: [d]
 title: "An LP Algorithm for Counting Eulerian Orientations Through the Lens of Quasi-polymorphism"
@@ -172,4 +181,3 @@ abstract: >
 
 
 # thesis
-
