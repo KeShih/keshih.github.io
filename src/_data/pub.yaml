@@ -168,7 +168,7 @@ title: "An LP Algorithm for Counting Eulerian Orientations Through the Lens of Q
 authors: [Jincheng Guan, Shuai Shao, Ke Shi]
 type: manuscript
 year: 2026
-bib: STOC '26 "Can AI Do Theory?" workshop; 2026, submitted.
+bib: 2026, Manuscript.
 notes:
  - 'The [poster](/files/presentations/eo-lp-poster.pdf) was accepted to the "Can AI do Theory?" workshop at STOC 2026.'
 abstract: >
@@ -178,7 +178,7 @@ abstract: >
 
 ---
 id: potts-ci
-title: "Coupling Independence and Zero-Freeness for the Antiferromagnetic Potts Model"
+title: "Coupling Independence implies Zero-Freeness"
 authors: [Shuai Shao, Ke Shi]
 type: manuscript
 
