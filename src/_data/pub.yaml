@@ -178,8 +178,11 @@ abstract: >
 
 ---
 id: potts-ci
+show: [d]
 title: "Coupling Independence implies Zero-Freeness"
 authors: [Shuai Shao, Ke Shi]
 type: manuscript
+abstract: >
+    For $\Delta \geq 2$ and $q \geq 11\Delta/6$, we prove that the antiferromagnetic $q$-state Potts partition function on finite simple graphs of maximum degree at most $\Delta$ has no Fisher zeros in a graph-uniform complex neighborhood of $[0, 1]$. Above the threshold, the proof establishes coupling independence throughout $[0, 1]$ using a soft version of Vigoda's flip dynamics. A separator-shell argument then converts this probabilistic control into complex zero-freeness. We also obtain Lee--Yang zero-freeness for vertex- and edge-colour fields and a zero-free neighborhood of the nonnegative orthant for log-concave Boolean Holant problems whose signatures satisfy $f(0) > 0$, including $b$-matchings. Seven further Potts regimes obtained from the same framework are summarized in the appendix.
 
 # thesis
