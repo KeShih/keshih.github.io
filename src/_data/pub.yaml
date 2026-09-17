@@ -168,7 +168,7 @@ title: "An LP Algorithm for Counting Eulerian Orientations Through the Lens of Q
 authors: [Jincheng Guan, Shuai Shao, Ke Shi]
 type: manuscript
 year: 2026
-bib: 2026, Manuscript.
+bib: STOC '26 "Can AI Do Theory?" workshop; 2026, submitted.
 notes:
  - 'The [poster](/files/presentations/eo-lp-poster.pdf) was accepted to the "Can AI do Theory?" workshop at STOC 2026.'
 abstract: >
@@ -176,8 +176,10 @@ abstract: >
     <br />
     We remove the NP oracle from the tractable side. For every signature set satisfying these conditions, we give a deterministic polynomial-time algorithm. The algorithm solves a natural linear program, extracts at each vertex a local candidate set, and shows that the LP constraints upgrade the quasi-polymorphism condition into full ternary XOR polymorphism on these candidate sets. This yields affine local structure, from which the instance reduces to a tractable Boolean $\#\mathrm{CSP}$. Hence $\#\mathrm{EO}$ satisfies a genuine FP versus $\#\mathrm P$-hard dichotomy.
 
-
-
-
+---
+id: potts-ci
+title: "Coupling Independence and Zero-Freeness for the Antiferromagnetic Potts Model"
+authors: [Shuai Shao, Ke Shi]
+type: manuscript
 
 # thesis

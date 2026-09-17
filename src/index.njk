@@ -212,6 +212,7 @@ eleventyExcludeFromCollections: true
           </ul>
           {% endif %}
 
+          {% if paper.bib or paper.pub or paper.year %}
           <p>
             <em>
               {% if paper.bib %} {{ paper.bib }} {% elif paper.pub %} {% if
@@ -222,6 +223,7 @@ eleventyExcludeFromCollections: true
               <time>{{ paper.year }}</time>. {% endif %}
             </em>
           </p>
+          {% endif %}
 
           {% for note in paper.notes %}
           <aside class="cv-non-selected note">{{ note | safe }}</aside>
