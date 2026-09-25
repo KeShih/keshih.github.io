@@ -56,6 +56,7 @@ abstract: >
 
 ---
 id: continuous-ssm
+show: [d]
 title: "Strong Spatial Mixing for Continuous Spin Systems with Multi-Interactions"
 authors: [Shuai Shao, Ke Shi, Bohan Wang]
 type: conference
