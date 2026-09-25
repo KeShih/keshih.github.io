@@ -71,21 +71,25 @@
 .abstract-guard {
   display: none;
 }
-.abstract-guard:checked~div .showmore:after{
-  color: #000;
-  content: "\e5ce"; /* expand less */
-  font-family: 'Material Icons';
-}
 .abstract-guard:checked~ .abstract {
   display: block
 }
-.showmore:after{
+.showmore{
   color: #000;
-  content: "\e5cf"; /* expand more */
   cursor: pointer;
 }
-.material-icons{
-  font-size: 1em; 
+.icon{
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  vertical-align: -0.125em;
+}
+.showmore .icon-less,
+.abstract-guard:checked~div .showmore .icon-more {
+  display: none;
+}
+.abstract-guard:checked~div .showmore .icon-less {
+  display: inline;
 }
 .cv-left{
   float:left;

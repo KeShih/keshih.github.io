@@ -1,4 +1,9 @@
-export function mathPlugin(md) {
+import katex from "katex";
+import { katexMacros } from "./katex-macros.js";
+
+// With { serverRender: true }, math is rendered to HTML at build time;
+// otherwise it is emitted as <span class="math"> for client-side KaTeX.
+export function mathPlugin(md, options = {}) {
   md.inline.ruler.after("escape", "math_inline", (state, silent) => {
     if (state.src[state.pos] !== "$") return false;
     if (state.src[state.pos + 1] === "$") return false;
@@ -65,12 +70,23 @@ export function mathPlugin(md) {
   });
 
   md.renderer.rules.math_inline = (tokens, idx) => {
+    if (options.serverRender) return renderKatex(tokens[idx].content, false);
     return `<span class="math">${escapeHtml(tokens[idx].content)}</span>`;
   };
 
   md.renderer.rules.math_block = (tokens, idx) => {
+    if (options.serverRender) return renderKatex(tokens[idx].content, true) + "\n";
     return `<span class="math display">${escapeHtml(tokens[idx].content)}</span>\n`;
   };
+}
+
+function renderKatex(tex, displayMode) {
+  return katex.renderToString(tex, {
+    displayMode,
+    throwOnError: false,
+    // Copy so a \gdef in one formula cannot leak into the next.
+    macros: { ...katexMacros },
+  });
 }
 
 function escapeHtml(str) {

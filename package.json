@@ -13,6 +13,7 @@
     "@citation-js/plugin-bibtex": "^0.7.0",
     "@citation-js/plugin-csl": "^0.7.0",
     "js-yaml": "^4.1.0",
+    "katex": "^0.16.47",
     "markdown-it": "^14.0.0"
   }
 }

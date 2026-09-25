@@ -16,6 +16,11 @@ export default function (eleventyConfig) {
   eleventyConfig.setLibrary("md", md);
 
   eleventyConfig.addPassthroughCopy({ static: "/" });
+  // Self-host KaTeX's stylesheet and fonts for pages with build-time math.
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/katex/dist/katex.min.css": "css/katex/katex.min.css",
+    "node_modules/katex/dist/fonts": "css/katex/fonts",
+  });
 
   eleventyConfig.addCollection("posts", (collectionApi) =>
     collectionApi

@@ -26,7 +26,7 @@ This is an academic personal website built with Eleventy 3 (ESM). It's a fork of
 
 All three are markdown-it plugins registered in `eleventy.config.js`:
 
-- **math.js** — Parses `$...$` (inline) and `$$...$$` (block) into `<span class="math">` elements. KaTeX renders them client-side using macros defined in `src/index.njk`.
+- **math.js** — Parses `$...$` (inline) and `$$...$$` (block). By default it emits `<span class="math">` elements that KaTeX renders client-side (blog layouts, using the macros inlined in `default.njk`/`cndefault.njk`). With `{ serverRender: true }` (used by `publications.js` for the homepage) it renders to HTML at build time using the macros in `plugins/katex-macros.js`. Keep the macro copies in sync.
 - **theorem-environments.js** — Fenced div syntax (`::: Theorem`, `::: Proof`, etc.) with auto-numbering and cross-references via `[@id]`. Supports both English and Chinese environment names.
 - **citations.js** — Parses `[@cite-key]` against `reference.bib` (BibTeX), renders inline citations and appends a References section using `bib_style.csl`.
 
@@ -43,7 +43,9 @@ All three are markdown-it plugins registered in `eleventy.config.js`:
 
 ### Static Assets
 
-`static/` is copied to the site root via passthrough copy. Contains CSS, PDFs (papers, presentations, CV), and images.
+`static/` is copied to the site root via passthrough copy. Contains CSS, PDFs (papers, presentations, CV), and images. KaTeX's stylesheet and fonts are copied from `node_modules/katex` to `/css/katex/`.
+
+The homepage loads no third-party resources: KaTeX is self-hosted and pre-rendered, icons are an inline SVG sprite, and the profile picture is served as resized WebP (`anon-grey-270.webp`/`-540.webp`) with a JPEG fallback. If you replace `anon-grey.png`, regenerate those variants too.
 
 ## Deployment and Branching
 

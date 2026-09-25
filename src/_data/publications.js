@@ -5,7 +5,7 @@ import markdownIt from "markdown-it";
 import { mathPlugin } from "../../plugins/math.js";
 
 const md = markdownIt({ html: true });
-md.use(mathPlugin);
+md.use(mathPlugin, { serverRender: true });
 
 function renderInline(text) {
   if (!text) return "";
