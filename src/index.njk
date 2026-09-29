@@ -86,17 +86,26 @@ eleventyExcludeFromCollections: true
         }
         setTimeout(peek, 4000 + Math.random() * 4000);
 
-        // ...and now and then, sign the page as her.
+        // ...and now and then, sign the page as her -- but only while the
+        // signature is on screen, so nobody catches it half-written.
         var signature = document.getElementById("signature");
-        function sign() {
-          if (!document.hidden) {
-            signature.classList.remove("signing");
-            void signature.offsetWidth; // restart the animation
-            signature.classList.add("signing");
-          }
-          setTimeout(sign, 20000 + Math.random() * 25000);
+        var inView = true;
+        if ("IntersectionObserver" in window) {
+          new IntersectionObserver(function (entries) {
+            inView = entries[0].isIntersecting;
+          }, { threshold: 0.9 }).observe(signature);
         }
-        setTimeout(sign, 1500 + Math.random() * 2000);
+        function sign() {
+          if (document.hidden || !inView) {
+            setTimeout(sign, 2000);
+            return;
+          }
+          signature.classList.remove("signing");
+          void signature.offsetWidth; // restart the animation
+          signature.classList.add("signing");
+          setTimeout(sign, 45000 + Math.random() * 30000);
+        }
+        setTimeout(sign, 1200);
       });
     </script>
 

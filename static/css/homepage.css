@@ -209,14 +209,39 @@ abbr[title] {
   stroke-dashoffset: 1;
 }
 .signature.signing {
-  animation: signature-life 9s ease forwards;
+  animation: signature-life 10s linear forwards;
 }
 .signature.signing .pen path {
-  animation: signature-draw var(--d) linear var(--t) forwards;
+  /* a touch slower than the traced pace, so it reads as deliberate */
+  animation: signature-draw calc(var(--d) * 1.25) linear calc(var(--t) * 1.25)
+    forwards;
 }
+/* written in, held, then the ink softly lifts and dissolves */
 @keyframes signature-life {
-  0%, 85% { opacity: 1; }
-  100% { opacity: 0; }
+  0% {
+    opacity: 1;
+    filter: blur(0);
+    transform: none;
+  }
+  80% {
+    opacity: 1;
+    filter: blur(0);
+    transform: none;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(3px);
+    transform: translateY(-6px);
+  }
+}
+@keyframes signature-fade {
+  0%, 80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 @keyframes signature-draw {
   to { stroke-dashoffset: 0; }
@@ -224,6 +249,9 @@ abbr[title] {
 @media (prefers-reduced-motion: reduce) {
   .signature .pen path {
     stroke-dashoffset: 0;
+  }
+  .signature.signing {
+    animation-name: signature-fade;
   }
   .signature.signing .pen path {
     animation: none;
