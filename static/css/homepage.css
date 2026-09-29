@@ -208,19 +208,11 @@ abbr[title] {
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
 }
-.signature .glint {
-  transform-box: fill-box;
-  transform-origin: center;
-  transform: scale(0);
-}
 .signature.signing {
   animation: signature-life 9s ease forwards;
 }
 .signature.signing .pen path {
   animation: signature-draw var(--d) linear var(--t) forwards;
-}
-.signature.signing .glint {
-  animation: signature-glint 0.9s ease-out var(--t);
 }
 @keyframes signature-life {
   0%, 85% { opacity: 1; }
@@ -229,17 +221,11 @@ abbr[title] {
 @keyframes signature-draw {
   to { stroke-dashoffset: 0; }
 }
-@keyframes signature-glint {
-  0% { transform: scale(0) rotate(0deg); }
-  40% { transform: scale(1) rotate(45deg); }
-  100% { transform: scale(0) rotate(90deg); }
-}
 @media (prefers-reduced-motion: reduce) {
   .signature .pen path {
     stroke-dashoffset: 0;
   }
-  .signature.signing .pen path,
-  .signature.signing .glint {
+  .signature.signing .pen path {
     animation: none;
   }
 }
