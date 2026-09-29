@@ -191,12 +191,26 @@ abbr[title] {
   }
 }
 .signature {
-  width: min(360px, 100%);
-  margin: 0 0 0 auto;
+  width: min(260px, 70%);
+  margin: 0.2em 0 0 auto;
   color: #111;
   opacity: 0;
   pointer-events: none;
   user-select: none;
+}
+@media screen and (min-width: 114ex) {
+  /* float in the whitespace beside the photo instead of reserving room */
+  .intro-right {
+    position: relative;
+    align-self: flex-start; /* end at the text, not at the photo's height */
+  }
+  .signature {
+    position: absolute;
+    top: calc(100% - 0.2em);
+    right: 0;
+    width: 280px;
+    margin: 0;
+  }
 }
 .signature svg {
   display: block;
@@ -208,13 +222,17 @@ abbr[title] {
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
 }
+.signature .ink-settle {
+  opacity: 0;
+}
 .signature.signing {
   animation: signature-life 10s linear forwards;
 }
 .signature.signing .pen path {
-  /* a touch slower than the traced pace, so it reads as deliberate */
-  animation: signature-draw calc(var(--d) * 1.25) linear calc(var(--t) * 1.25)
-    forwards;
+  animation: signature-draw var(--d) linear var(--t) forwards;
+}
+.signature.signing .ink-settle {
+  animation: signature-settle 0.4s ease-out var(--t) forwards;
 }
 /* written in, held, then the ink softly lifts and dissolves */
 @keyframes signature-life {
@@ -246,14 +264,21 @@ abbr[title] {
 @keyframes signature-draw {
   to { stroke-dashoffset: 0; }
 }
+@keyframes signature-settle {
+  to { opacity: 1; }
+}
 @media (prefers-reduced-motion: reduce) {
   .signature .pen path {
     stroke-dashoffset: 0;
   }
+  .signature .ink-settle {
+    opacity: 1;
+  }
   .signature.signing {
     animation-name: signature-fade;
   }
-  .signature.signing .pen path {
+  .signature.signing .pen path,
+  .signature.signing .ink-settle {
     animation: none;
   }
 }
