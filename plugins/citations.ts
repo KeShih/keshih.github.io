@@ -1,35 +1,43 @@
 import fs from "fs";
+import type MarkdownIt from "markdown-it";
 import { Cite } from "@citation-js/core";
 import "@citation-js/plugin-bibtex";
 import "@citation-js/plugin-csl";
 
-let bibData = null;
-let cslTemplate = null;
+type MdToken = ReturnType<MarkdownIt["parse"]>[number];
 
-function loadBib(bibFile) {
+interface CitationOptions {
+  bibFile?: string;
+  cslFile?: string;
+}
+
+let bibData: Cite | null = null;
+let cslTemplate: string | null = null;
+
+function loadBib(bibFile: string): Cite {
   if (bibData) return bibData;
   const bibContent = fs.readFileSync(bibFile, "utf8");
   bibData = new Cite(bibContent);
   return bibData;
 }
 
-function loadCsl(cslFile) {
+function loadCsl(cslFile: string): string {
   if (cslTemplate) return cslTemplate;
   cslTemplate = fs.readFileSync(cslFile, "utf8");
   return cslTemplate;
 }
 
-export function citationPlugin(md, options = {}) {
+export function citationPlugin(md: MarkdownIt, options: CitationOptions = {}) {
   const { bibFile, cslFile } = options;
 
   md.core.ruler.push("citations", (state) => {
     const citeRe = /\[@([\w-]+)\]/g;
-    const citedKeys = new Set();
+    const citedKeys = new Set<string>();
 
     for (const token of state.tokens) {
       if (token.type !== "inline" || !token.children) continue;
 
-      const newChildren = [];
+      const newChildren: MdToken[] = [];
       for (const child of token.children) {
         if (child.type !== "text") {
           newChildren.push(child);
@@ -37,16 +45,16 @@ export function citationPlugin(md, options = {}) {
         }
 
         let lastIndex = 0;
-        let m;
+        let m: RegExpExecArray | null;
         citeRe.lastIndex = 0;
         let hasMatch = false;
 
         while ((m = citeRe.exec(child.content)) !== null) {
           const key = m[1];
 
-          let bib;
+          let bib: Cite;
           try {
-            bib = loadBib(bibFile);
+            bib = loadBib(bibFile!);
           } catch {
             newChildren.push(child);
             break;
@@ -91,9 +99,9 @@ export function citationPlugin(md, options = {}) {
     }
 
     if (citedKeys.size > 0) {
-      let bib;
+      let bib: Cite;
       try {
-        bib = loadBib(bibFile);
+        bib = loadBib(bibFile!);
       } catch {
         return;
       }
