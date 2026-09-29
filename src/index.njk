@@ -85,11 +85,27 @@ eleventyExcludeFromCollections: true
           setTimeout(peek, 12000 + Math.random() * 18000);
         }
         setTimeout(peek, 4000 + Math.random() * 4000);
+
+        // ...and now and then, sign the page as her.
+        var signature = document.getElementById("signature");
+        function sign() {
+          if (!document.hidden) {
+            signature.classList.remove("signing");
+            void signature.offsetWidth; // restart the animation
+            signature.classList.add("signing");
+          }
+          setTimeout(sign, 20000 + Math.random() * 25000);
+        }
+        setTimeout(sign, 1500 + Math.random() * 2000);
       });
     </script>
 
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Allura&text=AnonChihaya&display=block"
       rel="stylesheet"
     />
     <link
@@ -181,6 +197,10 @@ eleventyExcludeFromCollections: true
                 ><samp itemprop="email">chihaya.anon@ustc.edu</samp></a
               >.
             </p>
+
+            <div class="signature" id="signature" aria-hidden="true">
+              <span>Anon Chihaya</span>
+            </div>
           </div>
         </div>
       </div>
