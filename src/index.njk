@@ -70,6 +70,24 @@ eleventyExcludeFromCollections: true
       }
     </script>
 
+    <script>
+      // Every so often, let the photo admit who it really is.
+      document.addEventListener("DOMContentLoaded", function () {
+        var avatar = document.getElementById("avatar");
+        if (!avatar) return;
+        function peek() {
+          if (!document.hidden) {
+            avatar.classList.add("peek");
+            setTimeout(function () {
+              avatar.classList.remove("peek");
+            }, 3500);
+          }
+          setTimeout(peek, 12000 + Math.random() * 18000);
+        }
+        setTimeout(peek, 4000 + Math.random() * 4000);
+      });
+    </script>
+
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -109,15 +127,25 @@ eleventyExcludeFromCollections: true
             itemtype="http://schema.org/ImageObject"
           >
             <meta itemprop="representativeOfPage" content="True" />
-            <img
-              width="270"
-              height="270"
-              src="/files/pictures/anon-grey.png"
-              style="border-radius: 50%; max-width: 95%"
-              title="ahh"
-              alt="a photo"
-              itemprop="contentUrl"
-            />
+            <a
+              class="avatar"
+              id="avatar"
+              href="https://zh.wikipedia.org/zh-cn/%E5%8D%83%E6%97%A9%E6%84%9B%E9%9F%B3"
+              target="_blank"
+              rel="noopener"
+              aria-describedby="avatar-bubble"
+            >
+              <img
+                width="270"
+                height="270"
+                src="/files/pictures/anon-grey.png"
+                alt="Chihaya Anon (千早爱音)"
+                itemprop="contentUrl"
+              />
+              <span class="avatar-bubble" id="avatar-bubble" role="tooltip">
+                Not me, it's <b>千早爱音</b> Chihaya Anon ↗
+              </span>
+            </a>
           </div>
           <div class="intro-right">
             <p>

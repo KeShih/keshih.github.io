@@ -141,4 +141,52 @@
 }
 abbr[title] {
   text-decoration: none;
+}.avatar {
+  position: relative;
+  display: inline-block;
+  max-width: 95%;
+  border: 0;
+}
+.avatar img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+.avatar:hover img,
+.avatar:focus-visible img {
+  transform: scale(1.03);
+}
+.avatar-bubble {
+  position: absolute;
+  left: 50%;
+  bottom: 4%;
+  transform: translate(-50%, 6px);
+  padding: 0.35em 0.8em;
+  border-radius: 1em;
+  background: #fff;
+  color: #333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  font-size: 0.8em;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.avatar:hover .avatar-bubble,
+.avatar:focus-visible .avatar-bubble,
+.avatar.peek .avatar-bubble {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .avatar img,
+  .avatar-bubble {
+    transition: none;
+  }
+  .avatar:hover img,
+  .avatar:focus-visible img {
+    transform: none;
+  }
 }
