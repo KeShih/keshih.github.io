@@ -229,10 +229,11 @@ abbr[title] {
   animation: signature-life 10s linear forwards;
 }
 .signature.signing .pen path {
-  animation: signature-draw var(--d) linear var(--t) forwards;
+  /* each pen stroke has its own timeline (keyframes live in the SVG) */
+  animation: var(--k) var(--sig-T) linear forwards;
 }
 .signature.signing .ink-settle {
-  animation: signature-settle 0.4s ease-out var(--t) forwards;
+  animation: signature-settle 0.25s ease-out var(--t) forwards;
 }
 /* written in, held, then the ink softly lifts and dissolves */
 @keyframes signature-life {
@@ -260,9 +261,6 @@ abbr[title] {
   100% {
     opacity: 0;
   }
-}
-@keyframes signature-draw {
-  to { stroke-dashoffset: 0; }
 }
 @keyframes signature-settle {
   to { opacity: 1; }
