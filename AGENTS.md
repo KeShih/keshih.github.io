@@ -7,28 +7,38 @@ This file provides guidance to coding agents when working with code in this repo
 ```bash
 npm run build      # Build site to _site/
 npm run serve      # Dev server with live reload (http://localhost:8080)
+npm run typecheck  # Type-check the TypeScript sources (tsc, no emit)
 npm run clean      # Remove _site/
 ```
 
-No test suite or linter is configured.
+No test suite or linter is configured. `npm run typecheck` is the closest thing to a static check.
 
 ## Architecture
 
-This is an academic personal website built with Eleventy 3 (ESM). It's a fork of [chaoxu.github.io](https://github.com/chaoxu/chaoxu.github.io) adapted for Ke Shi.
+This is an academic personal website built with Eleventy 3 (ESM + TypeScript). It's a fork of [chaoxu.github.io](https://github.com/chaoxu/chaoxu.github.io) adapted for Ke Shi.
+
+### TypeScript Setup
+
+The config, plugins, and data files are TypeScript, run directly (no build artifacts) via the [`tsx`](https://tsx.is) loader:
+
+- `npm run build`/`serve` set `NODE_OPTIONS="--import tsx"` and pass `--config=eleventy.config.ts` (Eleventy 3 does not auto-discover a `.ts` config file, so it must be named explicitly).
+- Type-only checking is `tsc` (`tsconfig.json`, `noEmit`, strict). `tsx` strips types at runtime; it does not type-check, so run `npm run typecheck` for that.
+- `@citation-js/*` ships no types; a minimal ambient declaration lives in `types/citation-js.d.ts`. Eleventy itself ships no types, so `eleventy.config.ts` declares a minimal local `EleventyConfig` interface for the API it uses.
+- Because Eleventy only auto-discovers `.js/.cjs/.mjs` global-data files, `eleventy.config.ts` registers `ts` via `addDataExtension("ts", { read: false, … })` so `src/_data/publications.ts` is imported as a module.
 
 ### Content Pipeline
 
 - Source lives in `src/` with Nunjucks templates and Markdown posts
-- `eleventy.config.js` configures a custom markdown-it instance with three plugins from `plugins/`
+- `eleventy.config.ts` configures a custom markdown-it instance with three plugins from `plugins/`
 - Output goes to `_site/`, deployed to GitHub Pages by `.github/workflows/deploy.yml`
 
 ### Custom Markdown Plugins (`plugins/`)
 
-All three are markdown-it plugins registered in `eleventy.config.js`:
+All three are markdown-it plugins registered in `eleventy.config.ts`:
 
-- **math.js** — Parses `$...$` (inline) and `$$...$$` (block) into `<span class="math">` elements. KaTeX renders them client-side using macros defined in `src/index.njk`.
-- **theorem-environments.js** — Fenced div syntax (`::: Theorem`, `::: Proof`, etc.) with auto-numbering and cross-references via `[@id]`. Supports both English and Chinese environment names.
-- **citations.js** — Parses `[@cite-key]` against `reference.bib` (BibTeX), renders inline citations and appends a References section using `bib_style.csl`.
+- **math.ts** — Parses `$...$` (inline) and `$$...$$` (block) into `<span class="math">` elements. KaTeX renders them client-side using macros defined in `src/index.njk`.
+- **theorem-environments.ts** — Fenced div syntax (`::: Theorem`, `::: Proof`, etc.) with auto-numbering and cross-references via `[@id]`. Supports both English and Chinese environment names.
+- **citations.ts** — Parses `[@cite-key]` against `reference.bib` (BibTeX), renders inline citations and appends a References section using `bib_style.csl`.
 
 ### Content Collections
 
@@ -39,7 +49,7 @@ All three are markdown-it plugins registered in `eleventy.config.js`:
 
 ### Publications Data
 
-`src/_data/pub.yaml` is a multi-document YAML file. The first document defines metadata (venues, people links, publication types). Subsequent documents are individual papers. `src/_data/publications.js` processes this into template data, rendering math in titles/abstracts.
+`src/_data/pub.yaml` is a multi-document YAML file. The first document defines metadata (venues, people links, publication types). Subsequent documents are individual papers. `src/_data/publications.ts` processes this into template data, rendering math in titles/abstracts.
 
 ### Static Assets
 
