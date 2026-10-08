@@ -89,6 +89,62 @@ eleventyExcludeFromCollections: true
         // ...and now and then, sign the page as her -- but only while the
         // signature is on screen, so nobody catches it half-written.
         var signature = document.getElementById("signature");
+        var svg = signature.querySelector("svg");
+        var settle = signature.querySelector(".ink-settle");
+        var total = +svg.getAttribute("data-total");
+        var still =
+          window.matchMedia &&
+          matchMedia("(prefers-reduced-motion: reduce)").matches;
+        // The pen strokes live in an SVG mask; each carries its own timeline
+        // (data-t: ms, data-f: fraction drawn). Driving the dash offsets from
+        // script, frame by frame, repaints reliably everywhere, including
+        // iOS Safari.
+        var strokes = [].map.call(
+          signature.querySelectorAll(".pen path"),
+          function (p) {
+            var len = p.getTotalLength();
+            p.setAttribute("stroke-dasharray", len + " " + len);
+            return {
+              p: p,
+              len: len,
+              t: p.getAttribute("data-t").split(",").map(Number),
+              f: p.getAttribute("data-f").split(",").map(Number),
+            };
+          }
+        );
+        function drawAt(ms) {
+          strokes.forEach(function (s) {
+            var t = s.t, f = s.f, n = t.length, frac, i = 1;
+            if (ms <= t[0]) frac = f[0];
+            else if (ms >= t[n - 1]) frac = 1;
+            else {
+              while (t[i] < ms) i++;
+              frac = f[i - 1] + ((f[i] - f[i - 1]) * (ms - t[i - 1])) / (t[i] - t[i - 1] || 1);
+            }
+            s.p.setAttribute("stroke-dashoffset", s.len * (1 - frac));
+          });
+          settle.setAttribute("opacity", Math.max(0, Math.min(1, (ms - total) / 250)));
+        }
+        var run = 0;
+        function play() {
+          var id = ++run;
+          signature.classList.remove("signing", "fading");
+          drawAt(still ? Infinity : 0);
+          void signature.offsetWidth;
+          signature.classList.add("signing");
+          var start = performance.now();
+          function frame(now) {
+            if (id !== run) return;
+            var ms = now - start;
+            drawAt(ms);
+            if (ms < total + 300) requestAnimationFrame(frame);
+          }
+          if (!still) requestAnimationFrame(frame);
+          // hold the finished signature, then let it dissolve
+          setTimeout(function () {
+            if (id === run) signature.classList.add("fading");
+          }, 8000);
+        }
         var inView = true;
         if ("IntersectionObserver" in window) {
           new IntersectionObserver(function (entries) {
@@ -100,9 +156,7 @@ eleventyExcludeFromCollections: true
             setTimeout(sign, 2000);
             return;
           }
-          signature.classList.remove("signing");
-          void signature.offsetWidth; // restart the animation
-          signature.classList.add("signing");
+          play();
           setTimeout(sign, 45000 + Math.random() * 30000);
         }
         setTimeout(sign, 1200);
