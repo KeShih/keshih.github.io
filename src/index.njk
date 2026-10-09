@@ -292,7 +292,8 @@ eleventyExcludeFromCollections: true
           {% else %}
           <i class="material-icons disabled">expand_more</i>
           {% endif %} {% if 'd' in paper.show %}
-          <a href="files/papers/{{ paper.id }}.pdf"
+          <a
+            href="{% if paper.pdf %}{{ paper.pdf }}{% else %}files/papers/{{ paper.id }}.pdf{% endif %}"
             ><i class="material-icons">description</i></a
           >
           {% else %}

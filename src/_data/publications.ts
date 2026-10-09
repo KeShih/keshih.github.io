@@ -31,6 +31,7 @@ interface RawPaper {
   pub?: string;
   year: number;
   bib?: string;
+  pdf?: string; // external PDF (e.g. arXiv); defaults to files/papers/<id>.pdf
   show?: string[];
   notes?: string[];
   abstract?: string;

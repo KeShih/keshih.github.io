@@ -180,6 +180,7 @@ abstract: >
 ---
 id: potts-ci
 show: [d]
+pdf: https://arxiv.org/pdf/2610.12456
 title: "Coupling Independence implies Zero-Freeness"
 authors: [Shuai Shao, Ke Shi]
 type: manuscript
