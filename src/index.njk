@@ -70,6 +70,99 @@ eleventyExcludeFromCollections: true
       }
     </script>
 
+    <script>
+      // Every so often, let the photo admit who it really is.
+      document.addEventListener("DOMContentLoaded", function () {
+        var avatar = document.getElementById("avatar");
+        if (!avatar) return;
+        function peek() {
+          if (!document.hidden) {
+            avatar.classList.add("peek");
+            setTimeout(function () {
+              avatar.classList.remove("peek");
+            }, 3500);
+          }
+          setTimeout(peek, 12000 + Math.random() * 18000);
+        }
+        setTimeout(peek, 4000 + Math.random() * 4000);
+
+        // ...and now and then, sign the page as her -- but only while the
+        // signature is on screen, so nobody catches it half-written.
+        var signature = document.getElementById("signature");
+        var svg = signature.querySelector("svg");
+        var settle = signature.querySelector(".ink-settle");
+        var total = +svg.getAttribute("data-total");
+        var still =
+          window.matchMedia &&
+          matchMedia("(prefers-reduced-motion: reduce)").matches;
+        // The pen strokes live in an SVG mask; each carries its own timeline
+        // (data-t: ms, data-f: fraction drawn). Driving the dash offsets from
+        // script, frame by frame, repaints reliably everywhere, including
+        // iOS Safari.
+        var strokes = [].map.call(
+          signature.querySelectorAll(".pen path"),
+          function (p) {
+            var len = p.getTotalLength();
+            p.setAttribute("stroke-dasharray", len + " " + len);
+            return {
+              p: p,
+              len: len,
+              t: p.getAttribute("data-t").split(",").map(Number),
+              f: p.getAttribute("data-f").split(",").map(Number),
+            };
+          }
+        );
+        function drawAt(ms) {
+          strokes.forEach(function (s) {
+            var t = s.t, f = s.f, n = t.length, frac, i = 1;
+            if (ms <= t[0]) frac = f[0];
+            else if (ms >= t[n - 1]) frac = 1;
+            else {
+              while (t[i] < ms) i++;
+              frac = f[i - 1] + ((f[i] - f[i - 1]) * (ms - t[i - 1])) / (t[i] - t[i - 1] || 1);
+            }
+            s.p.setAttribute("stroke-dashoffset", s.len * (1 - frac));
+          });
+          settle.setAttribute("opacity", Math.max(0, Math.min(1, (ms - total) / 250)));
+        }
+        var run = 0;
+        function play() {
+          var id = ++run;
+          signature.classList.remove("signing", "fading");
+          drawAt(still ? Infinity : 0);
+          void signature.offsetWidth;
+          signature.classList.add("signing");
+          var start = performance.now();
+          function frame(now) {
+            if (id !== run) return;
+            var ms = now - start;
+            drawAt(ms);
+            if (ms < total + 300) requestAnimationFrame(frame);
+          }
+          if (!still) requestAnimationFrame(frame);
+          // hold the finished signature, then let it dissolve
+          setTimeout(function () {
+            if (id === run) signature.classList.add("fading");
+          }, 8000);
+        }
+        var inView = true;
+        if ("IntersectionObserver" in window) {
+          new IntersectionObserver(function (entries) {
+            inView = entries[0].isIntersecting;
+          }, { threshold: 0.9 }).observe(signature);
+        }
+        function sign() {
+          if (document.hidden || !inView) {
+            setTimeout(sign, 2000);
+            return;
+          }
+          play();
+          setTimeout(sign, 45000 + Math.random() * 30000);
+        }
+        setTimeout(sign, 1200);
+      });
+    </script>
+
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -109,19 +202,29 @@ eleventyExcludeFromCollections: true
             itemtype="http://schema.org/ImageObject"
           >
             <meta itemprop="representativeOfPage" content="True" />
-            <img
-              width="270"
-              height="270"
-              src="/files/pictures/anon-grey.png"
-              style="border-radius: 50%; max-width: 95%"
-              title="ahh"
-              alt="a photo"
-              itemprop="contentUrl"
-            />
+            <a
+              class="avatar"
+              id="avatar"
+              href="https://zh.wikipedia.org/zh-cn/%E5%8D%83%E6%97%A9%E6%84%9B%E9%9F%B3"
+              target="_blank"
+              rel="noopener"
+              aria-describedby="avatar-bubble"
+            >
+              <img
+                width="270"
+                height="270"
+                src="/files/pictures/anon-grey.png"
+                alt="Chihaya Anon (千早爱音)"
+                itemprop="contentUrl"
+              />
+              <span class="avatar-bubble" id="avatar-bubble" role="tooltip">
+                Not me, it's <b>千早爱音</b> Chihaya Anon ↗
+              </span>
+            </a>
           </div>
           <div class="intro-right">
             <p>
-              I am a Master's student at <a href="https://ustc.edu/">USTC</a>,
+              I am a Ph.D. student at <a href="https://ustc.edu/">USTC</a>,
               currently under the guidance of
               <a href="http://staff.ustc.edu.cn/~wwwucuc/">Shuai Shao</a>.
             </p>
@@ -132,11 +235,11 @@ eleventyExcludeFromCollections: true
               guidance of <a href="https://chaoxu.prof">Chao Xu</a>.
             </p>
             <p>
-              My research interests revolve around algorithms and combinatorial
-              optimization. Recently, my focus has been directed towards
-              approximate counting algorithms and their correlations with the
-              phenomenon of phase transitions in statistical physics. Here is my
-              <a href="files/CV-en.pdf"> CV </a> .
+              During the first three years of my Ph.D., I focused on theoretical
+              computer science, including algorithms, combinatorial optimization,
+              and approximate counting. I have since shifted my focus and am now
+              exploring more practical, application-oriented directions. Here is my
+              <a href="files/CV-en.pdf">CV</a>.
             </p>
 
             <p>
@@ -153,6 +256,10 @@ eleventyExcludeFromCollections: true
                 ><samp itemprop="email">chihaya.anon@ustc.edu</samp></a
               >.
             </p>
+
+            <div class="signature" id="signature">
+              {% include "partials/signature.svg" %}
+            </div>
           </div>
         </div>
       </div>
@@ -185,7 +292,8 @@ eleventyExcludeFromCollections: true
           {% else %}
           <i class="material-icons disabled">expand_more</i>
           {% endif %} {% if 'd' in paper.show %}
-          <a href="files/papers/{{ paper.id }}.pdf"
+          <a
+            href="{% if paper.pdf %}{{ paper.pdf }}{% else %}files/papers/{{ paper.id }}.pdf{% endif %}"
             ><i class="material-icons">description</i></a
           >
           {% else %}
@@ -212,6 +320,7 @@ eleventyExcludeFromCollections: true
           </ul>
           {% endif %}
 
+          {% if paper.bib or paper.pub or paper.year %}
           <p>
             <em>
               {% if paper.bib %} {{ paper.bib }} {% elif paper.pub %} {% if
@@ -222,6 +331,7 @@ eleventyExcludeFromCollections: true
               <time>{{ paper.year }}</time>. {% endif %}
             </em>
           </p>
+          {% endif %}
 
           {% for note in paper.notes %}
           <aside class="cv-non-selected note">{{ note | safe }}</aside>
