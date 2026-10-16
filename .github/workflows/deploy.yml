@@ -23,6 +23,30 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
+      - run: npm run typecheck
+      # The CV is maintained in the private KeShih/CV repo. With a read-only
+      # token in the CV_TOKEN secret, publish its CV-en.pdf; otherwise (or if
+      # the fetch fails) keep the copy committed in static/files.
+      - name: Use the latest CV from KeShih/CV
+        env:
+          CV_TOKEN: ${{ secrets.CV_TOKEN }}
+        run: |
+          if [ -z "$CV_TOKEN" ]; then
+            echo "::warning::CV_TOKEN secret not set; publishing the CV committed in this repo."
+            exit 0
+          fi
+          if curl -fsSL \
+               -H "Authorization: Bearer $CV_TOKEN" \
+               -H "Accept: application/vnd.github.raw+json" \
+               -H "X-GitHub-Api-Version: 2022-11-28" \
+               -o "$RUNNER_TEMP/CV-en.pdf" \
+               https://api.github.com/repos/KeShih/CV/contents/CV-en.pdf \
+             && head -c 5 "$RUNNER_TEMP/CV-en.pdf" | grep -q '%PDF-'; then
+            cp "$RUNNER_TEMP/CV-en.pdf" static/files/CV-en.pdf
+            echo "Published CV-en.pdf from KeShih/CV."
+          else
+            echo "::warning::Could not fetch CV-en.pdf from KeShih/CV; publishing the CV committed in this repo."
+          fi
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
