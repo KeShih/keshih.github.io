@@ -55,6 +55,8 @@ All three are markdown-it plugins registered in `eleventy.config.ts`:
 
 `static/` is copied to the site root via passthrough copy. Contains CSS, PDFs (papers, presentations, CV), and images.
 
+The CV source lives in the private `KeShih/CV` repo (its `pub.sh` copies the built `CV-en/main.pdf` to `CV-en.pdf` at that repo's root). When the `CV_TOKEN` Actions secret holds a read-only token for that repo, the deploy workflow publishes its `CV-en.pdf` in place of `static/files/CV-en.pdf`; without the secret, or if the fetch fails, the committed copy is published.
+
 ## Deployment and Branching
 
 - `develop` — active development branch and current production deployment trigger. Pushes to `develop` run the `Deploy to GitHub Pages` GitHub Actions workflow, which builds `_site/` and deploys it with `actions/deploy-pages`.
