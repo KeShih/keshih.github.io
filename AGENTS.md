@@ -55,6 +55,8 @@ All three are markdown-it plugins registered in `eleventy.config.ts`:
 
 `static/` is copied to the site root via passthrough copy. Contains CSS, PDFs (papers, presentations, CV), and images.
 
+`src/sitemap.njk` renders `/sitemap.xml` from `src/_data/sitemap.ts`: the homepage, the CV, and every PDF in `static/files/papers` and `static/files/presentations`, with `lastmod` taken from git commit dates. The deploy checks out the full history for this, and a shallow clone omits `lastmod`. The posts and pages inherited from the fork are deliberately left out. `static/robots.txt` points crawlers to the sitemap.
+
 The CV source lives in the private `KeShih/CV` repo (`en.tex`, `zh.tex` and a shared `cv.sty`; `make en` builds `CV-en.pdf` at that repo's root). When the `CV_TOKEN` Actions secret holds a read-only token for that repo, the deploy workflow publishes its `CV-en.pdf` in place of `static/files/CV-en.pdf`; without the secret, or if the fetch fails, the committed copy is published.
 
 ## Deployment and Branching
