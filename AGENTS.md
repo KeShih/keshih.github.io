@@ -15,7 +15,7 @@ No test suite or linter is configured. `npm run typecheck` is the closest thing 
 
 ## Architecture
 
-This is an academic personal website built with Eleventy 3 (ESM + TypeScript). It's a fork of [chaoxu.github.io](https://github.com/chaoxu/chaoxu.github.io) adapted for Ke Shi.
+This is an academic personal website built with Eleventy 3 (ESM + TypeScript). It started as a fork of [chaoxu.github.io](https://github.com/chaoxu/chaoxu.github.io); the blog posts, pages, and blog templates inherited from that fork (Chao Xu's writing, still at chaoxu.prof) were removed, so the site is now the homepage only.
 
 ### TypeScript Setup
 
@@ -23,29 +23,18 @@ The config, plugins, and data files are TypeScript, run directly (no build artif
 
 - `npm run build`/`serve` set `NODE_OPTIONS="--import tsx"` and pass `--config=eleventy.config.ts` (Eleventy 3 does not auto-discover a `.ts` config file, so it must be named explicitly).
 - Type-only checking is `tsc` (`tsconfig.json`, `noEmit`, strict). `tsx` strips types at runtime; it does not type-check, so run `npm run typecheck` for that.
-- `@citation-js/*` ships no types; a minimal ambient declaration lives in `types/citation-js.d.ts`. Eleventy itself ships no types, so `eleventy.config.ts` declares a minimal local `EleventyConfig` interface for the API it uses.
-- Because Eleventy only auto-discovers `.js/.cjs/.mjs` global-data files, `eleventy.config.ts` registers `ts` via `addDataExtension("ts", { read: false, … })` so `src/_data/publications.ts` is imported as a module.
+- Eleventy ships no types, so `eleventy.config.ts` declares a minimal local `EleventyConfig` interface for the API it uses.
+- Because Eleventy only auto-discovers `.js/.cjs/.mjs` global-data files, `eleventy.config.ts` registers `ts` via `addDataExtension("ts", { read: false, … })` so `src/_data/*.ts` (`publications.ts`, `sitemap.ts`) are imported as modules.
 
-### Content Pipeline
+### Pages
 
-- Source lives in `src/` with Nunjucks templates and Markdown posts
-- `eleventy.config.ts` configures a custom markdown-it instance with three plugins from `plugins/`
-- Output goes to `_site/`, deployed to GitHub Pages by `.github/workflows/deploy.yml`
+- `src/index.njk` — the homepage with the publications list (a standalone template, no layout). KaTeX renders math client-side using the macros defined in it.
+- `src/404.njk` — the page GitHub Pages serves for unknown paths (`noindex`).
+- `src/sitemap.njk` — `/sitemap.xml` (see below).
 
-### Custom Markdown Plugins (`plugins/`)
+Output goes to `_site/`, deployed to GitHub Pages by `.github/workflows/deploy.yml`.
 
-All three are markdown-it plugins registered in `eleventy.config.ts`:
-
-- **math.ts** — Parses `$...$` (inline) and `$$...$$` (block) into `<span class="math">` elements. KaTeX renders them client-side using macros defined in `src/index.njk`.
-- **theorem-environments.ts** — Fenced div syntax (`::: Theorem`, `::: Proof`, etc.) with auto-numbering and cross-references via `[@id]`. Supports both English and Chinese environment names.
-- **citations.ts** — Parses `[@cite-key]` against `reference.bib` (BibTeX), renders inline citations and appends a References section using `bib_style.csl`.
-
-### Content Collections
-
-- `src/posts/*.md` — English blog posts (layout: `layouts/post.njk`)
-- `src/cnposts/*.md` — Chinese blog posts (layout: `layouts/cnpost.njk`)
-- `src/pages/*.md` — Standalone pages
-- `src/index.njk` — Homepage with publications list (not a layout, renders directly)
+`plugins/math.ts` is a markdown-it plugin used by `src/_data/publications.ts`: it turns `$...$` and `$$...$$` in paper titles, notes, and abstracts into `<span class="math">` elements for KaTeX.
 
 ### Publications Data
 
@@ -55,7 +44,7 @@ All three are markdown-it plugins registered in `eleventy.config.ts`:
 
 `static/` is copied to the site root via passthrough copy. Contains CSS, PDFs (papers, presentations, CV), and images.
 
-`src/sitemap.njk` renders `/sitemap.xml` from `src/_data/sitemap.ts`: the homepage, the CV, and every PDF in `static/files/papers` and `static/files/presentations`, with `lastmod` taken from git commit dates. The deploy checks out the full history for this, and a shallow clone omits `lastmod`. The posts and pages inherited from the fork are deliberately left out. `static/robots.txt` points crawlers to the sitemap.
+`src/sitemap.njk` renders `/sitemap.xml` from `src/_data/sitemap.ts`: the homepage, the CV, and every PDF in `static/files/papers` and `static/files/presentations`, with `lastmod` taken from git commit dates. The deploy checks out the full history for this, and a shallow clone omits `lastmod`. `static/robots.txt` points crawlers to the sitemap.
 
 The CV source lives in the private `KeShih/CV` repo (`en.tex`, `zh.tex` and a shared `cv.sty`; `make en` builds `CV-en.pdf` at that repo's root). When the `CV_TOKEN` Actions secret holds a read-only token for that repo, the deploy workflow publishes its `CV-en.pdf` in place of `static/files/CV-en.pdf`; without the secret, or if the fetch fails, the committed copy is published.
 

@@ -2,10 +2,8 @@ import { execFileSync } from "child_process";
 import fs from "fs";
 import path from "path";
 
-// Entries for /sitemap.xml (rendered by src/sitemap.njk). Only Ke Shi's own
-// content is listed: the homepage, the CV, and the paper and presentation
-// PDFs. The blog posts and pages inherited from the chaoxu.github.io fork are
-// left out on purpose.
+// Entries for /sitemap.xml (rendered by src/sitemap.njk): the homepage, the
+// CV, and the paper and presentation PDFs.
 
 const SITE = "https://keshi.pro";
 

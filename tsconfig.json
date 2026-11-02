@@ -16,7 +16,6 @@
   "include": [
     "eleventy.config.ts",
     "plugins/**/*.ts",
-    "src/**/*.ts",
-    "types/**/*.d.ts"
+    "src/**/*.ts"
   ]
 }

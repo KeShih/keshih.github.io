@@ -10,9 +10,6 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
-    "@citation-js/core": "^0.7.0",
-    "@citation-js/plugin-bibtex": "^0.7.0",
-    "@citation-js/plugin-csl": "^0.7.0",
     "@types/js-yaml": "^4.0.9",
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^26.1.1",
