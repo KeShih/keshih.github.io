@@ -23,7 +23,7 @@ people:
 types:
   conference: Conference Publications
   journal : Journal Publications
-  manuscript: <span>Manuscripts<br /><span style="font-size:0.6em"><em>Some manuscripts are available upon request.</em></span></span> 
+  manuscript: Preprint
   thesis: Thesis
   
 # id: the unique identifier
@@ -186,5 +186,18 @@ authors: [Shuai Shao, Ke Shi]
 type: manuscript
 abstract: >
     For $\Delta \geq 2$ and $q \geq 11\Delta/6$, we prove that the antiferromagnetic $q$-state Potts partition function on finite simple graphs of maximum degree at most $\Delta$ has no Fisher zeros in a graph-uniform complex neighbourhood of $[0, 1]$. For $q > 11\Delta/6$, the proof establishes coupling independence throughout $[0, 1]$ using a soft version of Vigoda's flip dynamics. Our main tool is a separator-shell transfer theorem for the Potts model on induced-subgraph closed classes of graphs of maximum degree at most $\Delta$, with $q \geq \Delta + 1$. It yields a graph-uniform zero-free neighbourhood of $[0, 1]$ from Hamming coupling independence at $0$ and a uniform coupling-independence bound on each interval $[\delta, 1]$, $\delta \in (0, 1]$. We also obtain zero-free Lee--Yang polydiscs around the uniform field for vertex- and edge-colour fields. For Boolean Holant problems on bounded-degree graphs whose signatures come from a fixed finite family of log-concave symmetric signatures $f$ with $f(0) > 0$, such as $b$-matchings, we obtain graph-uniform zero-free polytubes around every bounded box of nonnegative activities; their union is an open zero-free neighbourhood of the nonnegative orthant. An appendix summarizes further coupling-independence inputs and the zero-free regions they yield.
+
+---
+id: er-zero-freeness
+show: [d]
+title: "Zero-Freeness and Deterministic Counting on Erdős–Rényi Random Graphs"
+authors: [Ke Shi]
+type: manuscript
+year: 2026
+bib: 2026, Manuscript.
+notes:
+ - 'A [Lean 4 formalization](https://github.com/KeShih/ER-zero-freeness) of the zero-freeness results is available.'
+abstract: >
+    We establish complex zero-freeness and deterministic fully polynomial-time approximation schemes (FPTASes) for spin systems on the Erdős–Rényi random graph $G(n,d/n)$. For the antiferromagnetic $q$-state Potts model ($q\ge3$) with $d<d_2(q)\sim2q\log q$, the partition function is with high probability zero-free on a fixed-width neighborhood of $[0,1]$, including proper $q$-colorings at $z=0$; this yields a deterministic FPTAS for $q\ge(1/2+\eta)d/\log d$ (fixed $\eta>0$, large $d$), and, combined with the Achlioptas–Naor noncolorability bound, a deterministic FPTAS for counting proper $q$-colorings for all but at most one integer $q$ at each fixed $d>0$. An appendix extends the zero-freeness and the FPTAS up to the Erdős–Rényi condensation threshold of the Potts model, including proper colorings. For the zero-field Ising antiferromagnet and the zero-field Viana–Bray diluted spin glass on $G(n,d/n)$, we likewise obtain fixed-width zero-free neighborhoods and deterministic FPTASes up to their Kesten–Stigum thresholds. Dividing out each graph's forest weight removes the order-$\sqrt n$ fluctuations of the log-partition function caused by the random number of edges; complex moment bounds and Poisson short-cycle Taylor truncations then transfer nonvanishing from an explicit random cycle model, compensated where necessary, while connected-set Möbius inversion and Cayley's tree bound handle unbounded degrees in Barvinok interpolation.
 
 # thesis
