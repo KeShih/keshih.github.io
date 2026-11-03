@@ -201,7 +201,7 @@ abstract: >
 ---
 id: eo-lp
 show: [d]
-title: "An LP Algorithm for Counting Eulerian Orientations Through the Lens of Quasi-polymorphism"
+title: "An LP Algorithm for Counting Eulerian Orientations Through the Lens of Promise Polymorphisms"
 authors: [Jincheng Guan, Shuai Shao, Ke Shi]
 type: manuscript
 year: 2026
@@ -209,9 +209,9 @@ bib: 2026, Manuscript.
 notes:
  - 'The [poster](/files/presentations/eo-lp-poster.pdf) was accepted to the "Can AI do Theory?" workshop at STOC 2026.'
 abstract: >
-    The counting weighted Eulerian orientation problem $\#\mathrm{EO}$ is a central obstruction in the classification of complex-valued Boolean Holant problems. A recent result gave an $\mathrm{FP}^{\mathrm{NP}}$ versus $\#\mathrm P$-hard dichotomy for $\#\mathrm{EO}$. Its tractable side is described by quasi-polymorphisms, namely one-sided ternary XOR polymorphism conditions, together with membership in one of two tractable pairing classes.
+    The weighted Eulerian orientation counting problem ($\#\mathrm{EO}$) plays a key role in the complexity classification program for Holant problems. A recent result established an $\mathrm{FP}^{\mathrm{NP}}$ versus $\#\mathrm P$-hard dichotomy for $\#\mathrm{EO}$ problems. On the tractable side of this dichotomy, the supports of all functions admit the ternary XOR operation as a promise polymorphism relaxed in the same direction. It was left open whether all cases on the $\mathrm{FP}^{\mathrm{NP}}$ side are in fact in FP. In this paper, we settle this question by giving a polynomial-time algorithm for all cases on the $\mathrm{FP}^{\mathrm{NP}}$ side. Consequently, we obtain a complete FP versus $\#\mathrm P$-hard dichotomy for counting weighted Eulerian orientations, and further for complex-valued Holant problems with a nonzero signature of odd arity.
     <br />
-    We remove the NP oracle from the tractable side. For every signature set satisfying these conditions, we give a deterministic polynomial-time algorithm. The algorithm solves a natural linear program, extracts at each vertex a local candidate set, and shows that the LP constraints upgrade the quasi-polymorphism condition into full ternary XOR polymorphism on these candidate sets. This yields affine local structure, from which the instance reduces to a tractable Boolean $\#\mathrm{CSP}$. Hence $\#\mathrm{EO}$ satisfies a genuine FP versus $\#\mathrm P$-hard dichotomy.
+    Our algorithm is based on a linear programming relaxation, but we use it in a nonstandard way. Instead of proving that the relaxation is integral and solving the problem directly from an optimal LP solution, we use the relaxation as a structural tool to lift the promise polymorphism condition to an ordinary polymorphism condition. This reveals an affine local structure of the constraint functions, which leads to tractability. A key technical innovation of our paper is to exploit the one-sided promise polymorphism through cubic forms of LP constraints, which interact precisely with the desired ternary XOR polymorphism.
 
 ---
 id: matching-ssm
