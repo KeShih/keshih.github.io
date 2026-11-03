@@ -176,6 +176,19 @@ abstract: >
     For $\Delta \geq 2$ and $q \geq 11\Delta/6$, we prove that the antiferromagnetic $q$-state Potts partition function on finite simple graphs of maximum degree at most $\Delta$ has no Fisher zeros in a graph-uniform complex neighbourhood of $[0, 1]$. For $q > 11\Delta/6$, the proof establishes coupling independence throughout $[0, 1]$ using a soft version of Vigoda's flip dynamics. Our main tool is a separator-shell transfer theorem for the Potts model on induced-subgraph closed classes of graphs of maximum degree at most $\Delta$, with $q \geq \Delta + 1$. It yields a graph-uniform zero-free neighbourhood of $[0, 1]$ from Hamming coupling independence at $0$ and a uniform coupling-independence bound on each interval $[\delta, 1]$, $\delta \in (0, 1]$. We also obtain zero-free Lee--Yang polydiscs around the uniform field for vertex- and edge-colour fields. For Boolean Holant problems on bounded-degree graphs whose signatures come from a fixed finite family of log-concave symmetric signatures $f$ with $f(0) > 0$, such as $b$-matchings, we obtain graph-uniform zero-free polytubes around every bounded box of nonnegative activities; their union is an open zero-free neighbourhood of the nonnegative orthant. An appendix summarizes further coupling-independence inputs and the zero-free regions they yield.
 
 ---
+id: eo-dichotomy
+show: [d]
+title: "A Dichotomy for Constrained Eulerian Orientations"
+authors: [Jincheng Guan, Shuai Shao, Ke Shi]
+type: manuscript
+year: 2026
+bib: 2026, Submitted.
+abstract: >
+    We establish a complete complexity dichotomy for deciding whether a graph admits an Eulerian orientation satisfying local Boolean constraints at vertices. We denote this problem by $\mathrm{EO}$. For every fixed finite set of constraints, the problem is either polynomial-time solvable or NP-complete. The classification identifies two new tractable classes. In particular, one such class is obtained by exploiting the promise polymorphism condition used for proving tractability in counting $\mathrm{EO}$ [\[GSS26\]](#eo-lp). For the hardness proof, we develop a nonconstructive reduction based on unsatisfiable instances and show how failures of the promise conditions yield obstructions to affine and bijunctive tractability, leading to NP-hardness through Schaefer's dichotomy.
+    <br />
+    Combining our $\mathrm{EO}$ dichotomy with the classification of bipartite edge constraint satisfaction problems, we also classify the complexity of general graph orientation problems assuming both unary pinning constraints are available. Every such problem is polynomial-time solvable or NP-complete, except for a residual family of unresolved $\Delta$-matroid parity cases. These results advance the classification of constraint satisfaction problems with restricted variable occurrences and connect their tractability to promise polymorphisms.
+
+---
 id: eo-lp
 show: [d]
 title: "An LP Algorithm for Counting Eulerian Orientations Through the Lens of Quasi-polymorphism"
