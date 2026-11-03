@@ -68,6 +68,10 @@ authors: [Shuai Shao, Ke Shi, Bohan Wang]
 type: conference
 year: 2026
 pub: ISAAC
+abstract: >
+    We study spatial correlation decay, focusing on strong spatial mixing (SSM), for continuous spin systems with multi-interactions on hypergraphs. For several classes of discrete spin systems, zero-freeness of the partition function and SSM have been related in both directions. For continuous spin systems, this relationship is less understood. In this paper, we prove that a uniform pinned zero-free disk about $\beta = 0$ implies SSM throughout that disk for continuous spin systems with bounded interactions. Combined with the zero-freeness result of Barvinok, this gives SSM for systems whose interactions are $1$-Lipschitz in the Hamming metric, on hypergraphs with maximum degree $\Delta$ and maximum edge size $r$, for all complex $\beta$ with $|\beta| < 1/(3\Delta\sqrt{r-1})$. The SSM constants are uniform over the system size, the product reference measures, and all valid product boundary events.
+    <br />
+    A key technical contribution of this paper is a divisibility relation for partition functions of continuous spin systems. We follow the local dependence of coefficients (LDC) framework developed for discrete systems and extend its divisibility step to integral partition functions. The Taylor coefficients in our divisibility identity are sums of integrals of products of interactions, with repeated hyperedges allowed. A measure-preserving swap of two configurations, together with a reindexing of the interaction factors, cancels all contributions below the distance between the boundary supports. This shows how the LDC and zero-freeness approaches fit together; algorithmic running times additionally depend on how the continuous interactions and the required integrals are represented and computed.
 
 ---
 id: ising-weitz
