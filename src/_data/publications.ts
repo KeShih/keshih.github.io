@@ -21,6 +21,7 @@ interface Meta {
   venues: Record<string, string>;
   people: Record<string, string | null | undefined>;
   types: Record<string, string>;
+  selectedMode?: boolean; // list only `selected` papers until "See all publications"
 }
 
 interface RawPaper {
@@ -47,8 +48,10 @@ interface Coauthor {
 type ProcessedPaper = Omit<RawPaper, "authors" | "pub" | "selected"> & {
   authors: Coauthor[];
   pub?: { name: string; venue: string };
-  selected: string;
+  selected: string; // CSS class; "cv-non-selected" hides the paper in selected mode
   show: string[];
+  pdfHref?: string; // the paper's PDF: `pdf` if given, else the copy in files/papers
+  slidesHref?: string;
 };
 
 function coauthorList(authors: string[], people: Meta["people"]): Coauthor[] {
@@ -60,12 +63,15 @@ function coauthorList(authors: string[], people: Meta["people"]): Coauthor[] {
 
 function buildPaper(paper: RawPaper, meta: Meta): ProcessedPaper {
   const { pub, ...rest } = paper;
+  const show = paper.show || [];
   const result: ProcessedPaper = {
     ...rest,
-    show: paper.show || [],
+    show,
+    pdfHref: show.includes("d") ? paper.pdf || `/files/papers/${paper.id}.pdf` : undefined,
+    slidesHref: show.includes("p") ? `/files/presentations/${paper.id}.pdf` : undefined,
     title: renderInline(paper.title),
     authors: coauthorList(paper.authors || [], meta.people),
-    selected: paper.selected ? "cv-selected" : "cv-non-selected",
+    selected: meta.selectedMode && !paper.selected ? "cv-non-selected" : "cv-selected",
   };
 
   if (paper.notes) {
@@ -105,5 +111,5 @@ export default function () {
     });
   }
 
-  return { pubTypes };
+  return { pubTypes, selectedMode: Boolean(meta.selectedMode) };
 }

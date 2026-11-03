@@ -40,6 +40,8 @@ Output goes to `_site/`, deployed to GitHub Pages by `.github/workflows/deploy.y
 
 `src/_data/pub.yaml` is a multi-document YAML file. The first document defines metadata (venues, people links, publication types). Subsequent documents are individual papers. `src/_data/publications.ts` processes this into template data, rendering math in titles/abstracts.
 
+On the homepage both the paper title and the document icon link to the paper's PDF (`pdfHref`: the paper's `pdf` field if set, else `files/papers/<id>.pdf`), so search engines see the full title as the text of the link to the PDF. Google also shows a PDF's Title metadata in search results and browsers show it in the tab, so every PDF in `static/files/papers` and `static/files/presentations` should carry its title and authors: set `\hypersetup{pdftitle={...}, pdfauthor={...}}` in the LaTeX source before building it (check with `pdfinfo`).
+
 ### Static Assets
 
 `static/` is copied to the site root via passthrough copy. Contains CSS, PDFs (papers, presentations, CV), and images.

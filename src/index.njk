@@ -8,8 +8,19 @@ eleventyExcludeFromCollections: true
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Ke Shi</title>
-    <meta name="description" content="The personal webpage of Ke Shi." />
+    <title>Ke Shi (史可) · USTC</title>
+    <meta
+      name="description"
+      content="Homepage of Ke Shi (史可), Ph.D. student at the University of Science and Technology of China (USTC): papers on algorithms, combinatorial optimization and approximate counting, with PDFs, abstracts and CV."
+    />
+    <link rel="canonical" href="https://keshi.pro/" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content="Ke Shi (史可)" />
+    <meta
+      property="og:description"
+      content="Ph.D. student at USTC. Papers on algorithms, combinatorial optimization and approximate counting."
+    />
+    <meta property="og:url" content="https://keshi.pro/" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"
@@ -60,15 +71,30 @@ eleventyExcludeFromCollections: true
       });
     </script>
 
+    {% if publications.selectedMode %}
     <script>
+      // Selected mode (selectedMode in pub.yaml): papers not marked `selected`
+      // stay hidden until "See all publications" is clicked.
       function togglePublication() {
         var x = document.getElementsByClassName("cv-non-selected");
         for (var i = x.length - 1; i >= 0; --i)
           x[i].classList.remove("cv-non-selected");
-        x = document.getElementById("pub-toggle");
-        x.style.display = "none";
+        document.getElementById("pub-toggle").style.display = "none";
       }
+      // A link to a hidden paper (e.g. /#eo-lp) shows every paper and
+      // scrolls to it.
+      function showLinkedPublication() {
+        var id = decodeURIComponent(location.hash.slice(1));
+        var target = id && document.getElementById(id);
+        if (target && target.closest(".cv-non-selected")) {
+          togglePublication();
+          target.scrollIntoView();
+        }
+      }
+      document.addEventListener("DOMContentLoaded", showLinkedPublication);
+      window.addEventListener("hashchange", showLinkedPublication);
     </script>
+    {% endif %}
 
     <script>
       // Every so often, let the photo admit who it really is.
@@ -179,8 +205,9 @@ eleventyExcludeFromCollections: true
       href="/css/homepage.css"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="/css/publications.css" />
   </head>
-  <body onload="togglePublication()">
+  <body>
     <div class="container">
       <div class="person" itemscope="" itemtype="http://schema.org/Person">
         <meta itemprop="gender" content="Male" />
@@ -264,6 +291,8 @@ eleventyExcludeFromCollections: true
         </div>
       </div>
 
+      {% set hiddenInSelectedMode = "cv-non-selected" if publications.selectedMode else "" %}
+      {% if publications.selectedMode %}
       <div class="row pubtypeheader" id="pub-toggle">
         <span
           >Selected Publications<br /><span
@@ -273,9 +302,10 @@ eleventyExcludeFromCollections: true
           ></span
         >
       </div>
+      {% endif %}
 
       {% for pub_type in publications.pubTypes %}
-      <div class="cv-non-selected row pubtypeheader">{{ pub_type.title | safe }}</div>
+      <div class="{{ hiddenInSelectedMode }} row pubtypeheader">{{ pub_type.title | safe }}</div>
       {% for paper in pub_type.papers %}
       <div class="{{ paper.selected }} row cv-entry" id="{{ paper.id }}">
         <input
@@ -291,16 +321,15 @@ eleventyExcludeFromCollections: true
           ></label>
           {% else %}
           <i class="material-icons disabled">expand_more</i>
-          {% endif %} {% if 'd' in paper.show %}
-          <a
-            href="{% if paper.pdf %}{{ paper.pdf }}{% else %}files/papers/{{ paper.id }}.pdf{% endif %}"
-            ><i class="material-icons">description</i></a
+          {% endif %} {% if paper.pdfHref %}
+          <a href="{{ paper.pdfHref }}" title="PDF" aria-label="PDF"
+            ><i class="material-icons" aria-hidden="true">description</i></a
           >
           {% else %}
           <i class="material-icons disabled">description</i>
-          {% endif %} {% if 'p' in paper.show %}
-          <a href="files/presentations/{{ paper.id }}.pdf"
-            ><i class="material-icons">airplay</i></a
+          {% endif %} {% if paper.slidesHref %}
+          <a href="{{ paper.slidesHref }}" title="Slides" aria-label="Slides"
+            ><i class="material-icons" aria-hidden="true">airplay</i></a
           >
           {% else %}
           <i class="material-icons disabled">airplay</i>
@@ -308,7 +337,12 @@ eleventyExcludeFromCollections: true
         </div>
 
         <div class="cv-right">
-          <cite class="paper-title">{{ paper.title | safe }}</cite>
+          {# The title links to the PDF too, so search engines see the
+              paper's title as the text of the link to its PDF. #}
+          <cite class="paper-title"
+            >{% if paper.pdfHref %}<a href="{{ paper.pdfHref }}">{{ paper.title | safe }}</a
+            >{% else %}{{ paper.title | safe }}{% endif %}</cite
+          >
           {% if paper.authors %}
           <ul class="coauthor-list">
             {% for author in paper.authors %}
@@ -334,7 +368,7 @@ eleventyExcludeFromCollections: true
           {% endif %}
 
           {% for note in paper.notes %}
-          <aside class="cv-non-selected note">{{ note | safe }}</aside>
+          <aside class="{{ hiddenInSelectedMode }} note">{{ note | safe }}</aside>
           {% endfor %}
         </div>
 

@@ -1,0 +1,8 @@
+/* Paper titles on the homepage link to their PDFs; keep them looking like
+   titles until hovered. */
+.paper-title a {
+  color: inherit;
+}
+.paper-title a:hover {
+  border-bottom-color: currentColor;
+}

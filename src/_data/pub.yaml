@@ -25,7 +25,12 @@ types:
   journal : Journal Publications
   manuscript: Preprint
   thesis: Thesis
-  
+
+# true: the homepage first lists only the papers marked `selected: true`, with
+# a "See all publications" link (a link to a hidden paper, e.g. /#eo-lp, still
+# shows everything and scrolls to it). false: every paper is listed.
+selectedMode: false
+
 # id: the unique identifier
 # title: title of the article
 # authors: a list of authors
@@ -37,6 +42,7 @@ types:
 # notes: a list of notes
 # dedication: a dedication, appends to the abstract
 # abstract: the abstract of the paper
+# selected: true lists the paper in selected mode (see selectedMode above)
 
 # For conferences and journals, the default bib line is
 # pub + year
