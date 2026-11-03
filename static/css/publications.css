@@ -1,8 +1,6 @@
-/* Paper titles on the homepage link to their PDFs; keep them looking like
-   titles until hovered. */
-.paper-title a {
-  color: inherit;
-}
+/* Paper titles on the homepage link to their PDFs; keep them looking exactly
+   like plain titles, without the dotted underline of other links. */
+.paper-title a,
 .paper-title a:hover {
-  border-bottom-color: currentColor;
+  border-bottom: 0;
 }
