@@ -141,4 +141,99 @@
 }
 abbr[title] {
   text-decoration: none;
+}.avatar {
+  position: relative;
+  display: inline-block;
+  max-width: 95%;
+  border: 0;
+}
+.avatar img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+.avatar:hover img,
+.avatar:focus-visible img {
+  transform: scale(1.03);
+}
+.avatar-bubble {
+  position: absolute;
+  left: 50%;
+  bottom: 4%;
+  transform: translate(-50%, 6px);
+  padding: 0.35em 0.8em;
+  border-radius: 1em;
+  background: #fff;
+  color: #333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  font-size: 0.8em;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.avatar:hover .avatar-bubble,
+.avatar:focus-visible .avatar-bubble,
+.avatar.peek .avatar-bubble {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .avatar img,
+  .avatar-bubble {
+    transition: none;
+  }
+  .avatar:hover img,
+  .avatar:focus-visible img {
+    transform: none;
+  }
+}
+.signature {
+  width: min(260px, 70%);
+  margin: 0.2em 0 0 auto;
+  color: #111;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+}
+@media screen and (min-width: 114ex) {
+  /* float in the whitespace beside the photo instead of reserving room */
+  .intro-right {
+    position: relative;
+    align-self: flex-start; /* end at the text, not at the photo's height */
+  }
+  .signature {
+    position: absolute;
+    top: calc(100% - 0.2em);
+    right: 0;
+    width: 280px;
+    margin: 0;
+  }
+}
+.signature svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.signature.signing {
+  opacity: 1;
+}
+/* once written and held, the ink softly lifts and dissolves */
+.signature.signing.fading {
+  opacity: 0;
+  filter: blur(3px);
+  transform: translateY(-6px);
+  transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1),
+    filter 2s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .signature.signing.fading {
+    filter: none;
+    transform: none;
+    transition: opacity 2s;
+  }
 }
