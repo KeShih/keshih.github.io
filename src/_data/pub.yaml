@@ -16,17 +16,32 @@ people:
   Kazuhisa Makino: https://www.kurims.kyoto-u.ac.jp/en/list/makino.html
   Shuai Shao: http://staff.ustc.edu.cn/~wwwucuc/
   Yike Chen: https://stargazer-cyk.github.io/
+  Yuan Chen:
+  Jincheng Guan:
+  Bohan Wang:
 
 types:
   conference: Conference Publications
   journal : Journal Publications
-  manuscript: <span>Manuscripts<br /><span style="font-size:0.6em"><em>Some manuscripts are available upon request.</em></span></span> 
+  manuscript: Preprint
+  anon: Anon Manuscripts
   thesis: Thesis
-  
+
+# the status every paper of a type gets when it has no `bib`, shown as
+# "<year>, <status>". Anon papers (signed Anon Chihaya) are never submitted to
+# a conference or journal.
+typeStatus:
+  anon: Not intended for publication.
+
+# true: the homepage first lists only the papers marked `selected: true`, with
+# a "See all publications" link (a link to a hidden paper, e.g. /#eo-lp, still
+# shows everything and scrolls to it). false: every paper is listed.
+selectedMode: false
+
 # id: the unique identifier
 # title: title of the article
 # authors: a list of authors
-# type: conference, journal, manuscript or thesis
+# type: conference, journal, manuscript, anon (see typeStatus above) or thesis
 # pub: abbreviation of the conference name or publication
 # year: the publication year
 # bib: this overloads everything to show as the bibliography line
@@ -34,12 +49,37 @@ types:
 # notes: a list of notes
 # dedication: a dedication, appends to the abstract
 # abstract: the abstract of the paper
+# selected: true lists the paper in selected mode (see selectedMode above)
 
 # For conferences and journals, the default bib line is
 # pub + year
 # bib allow user to add extra information
 
 # conference publications
+---
+id: hardcore-cc
+show: [d]
+title: "Zero-Freeness of the Hard-Core Model with Bounded Connective Constant"
+authors: [Yuan Chen, Shuai Shao, Ke Shi]
+type: conference
+year: 2026
+pub: ISAAC
+abstract: >
+    We investigate zero-free regions of the partition function of the hard-core model on finite graphs and their implications for the analyticity of free energy on infinite lattices. Classical results establish zero-freeness up to the tree uniqueness threshold based on maximum degree, but the connective constant offers a tighter structural measure for graphs like regular lattices. We bridge this gap by defining the connective constant for finite graphs via a lower bound on the number of self-avoiding walks. We prove zero-freeness in a complex neighborhood for graph families with lower connective constant $\mu$ when $\lambda < \lambda_c(\mu)$, establishing uniqueness and analyticity of the free energy density for infinite lattices beyond maximum-degree bounds. The proof uses a block contraction technique that lifts the correlation decay property from a real interval to a strip-like complex neighborhood.
+
+---
+id: continuous-ssm
+show: [d]
+title: "Strong Spatial Mixing for Continuous Spin Systems with Multi-Interactions"
+authors: [Shuai Shao, Ke Shi, Bohan Wang]
+type: conference
+year: 2026
+pub: ISAAC
+abstract: >
+    We study spatial correlation decay, focusing on strong spatial mixing (SSM), for continuous spin systems with multi-interactions on hypergraphs. For several classes of discrete spin systems, zero-freeness of the partition function and SSM have been related in both directions. For continuous spin systems, this relationship is less understood. In this paper, we prove that a uniform pinned zero-free disk about $\beta = 0$ implies SSM throughout that disk for continuous spin systems with bounded interactions. Combined with the zero-freeness result of Barvinok, this gives SSM for systems whose interactions are $1$-Lipschitz in the Hamming metric, on hypergraphs with maximum degree $\Delta$ and maximum edge size $r$, for all complex $\beta$ with $|\beta| < 1/(3\Delta\sqrt{r-1})$. The SSM constants are uniform over the system size, the product reference measures, and all valid product boundary events.
+    <br />
+    A key technical contribution of this paper is a divisibility relation for partition functions of continuous spin systems. We follow the local dependence of coefficients (LDC) framework developed for discrete systems and extend its divisibility step to integral partition functions. The Taylor coefficients in our divisibility identity are sums of integrals of products of interactions, with repeated hyperedges allowed. A measure-preserving swap of two configurations, together with a reindexing of the interaction factors, cancels all contributions below the distance between the boundary supports. This shows how the LDC and zero-freeness approaches fit together; algorithmic running times additionally depend on how the continuous interactions and the required integrals are represented and computed.
+
 ---
 id: ising-weitz
 show: [d]
@@ -126,6 +166,48 @@ notes:
 # manuscripts
 
 ---
+id: potts-ci
+show: [d]
+pdf: https://arxiv.org/pdf/2610.12456
+title: "Coupling Independence implies Zero-Freeness"
+authors: [Shuai Shao, Ke Shi]
+type: manuscript
+year: 2026
+bib: 2026, Submitted.
+notes:
+ - 'A [Lean 4 formalization](https://github.com/KeShih/coupling-independence-implies-zero-freeness) is available.'
+abstract: >
+    For $\Delta \geq 2$ and $q \geq 11\Delta/6$, we prove that the antiferromagnetic $q$-state Potts partition function on finite simple graphs of maximum degree at most $\Delta$ has no Fisher zeros in a graph-uniform complex neighbourhood of $[0, 1]$. For $q > 11\Delta/6$, the proof establishes coupling independence throughout $[0, 1]$ using a soft version of Vigoda's flip dynamics. Our main tool is a separator-shell transfer theorem for the Potts model on induced-subgraph closed classes of graphs of maximum degree at most $\Delta$, with $q \geq \Delta + 1$. It yields a graph-uniform zero-free neighbourhood of $[0, 1]$ from Hamming coupling independence at $0$ and a uniform coupling-independence bound on each interval $[\delta, 1]$, $\delta \in (0, 1]$. We also obtain zero-free Lee--Yang polydiscs around the uniform field for vertex- and edge-colour fields. For Boolean Holant problems on bounded-degree graphs whose signatures come from a fixed finite family of log-concave symmetric signatures $f$ with $f(0) > 0$, such as $b$-matchings, we obtain graph-uniform zero-free polytubes around every bounded box of nonnegative activities; their union is an open zero-free neighbourhood of the nonnegative orthant. An appendix summarizes further coupling-independence inputs and the zero-free regions they yield.
+
+---
+id: eo-dichotomy
+show: [d]
+title: "A Dichotomy for Constrained Eulerian Orientations"
+authors: [Jincheng Guan, Shuai Shao, Ke Shi]
+type: manuscript
+year: 2026
+bib: 2026, Submitted.
+abstract: >
+    We establish a complete complexity dichotomy for deciding whether a graph admits an Eulerian orientation satisfying local Boolean constraints at vertices. We denote this problem by $\mathrm{EO}$. For every fixed finite set of constraints, the problem is either polynomial-time solvable or NP-complete. The classification identifies two new tractable classes. In particular, one such class is obtained by exploiting the promise polymorphism condition used for proving tractability in counting $\mathrm{EO}$ [\[GSS26\]](#eo-lp). For the hardness proof, we develop a nonconstructive reduction based on unsatisfiable instances and show how failures of the promise conditions yield obstructions to affine and bijunctive tractability, leading to NP-hardness through Schaefer's dichotomy.
+    <br />
+    Combining our $\mathrm{EO}$ dichotomy with the classification of bipartite edge constraint satisfaction problems, we also classify the complexity of general graph orientation problems assuming both unary pinning constraints are available. Every such problem is polynomial-time solvable or NP-complete, except for a residual family of unresolved $\Delta$-matroid parity cases. These results advance the classification of constraint satisfaction problems with restricted variable occurrences and connect their tractability to promise polymorphisms.
+
+---
+id: eo-lp
+show: [d]
+title: "An LP Algorithm for Counting Eulerian Orientations Through the Lens of Promise Polymorphisms"
+authors: [Jincheng Guan, Shuai Shao, Ke Shi]
+type: manuscript
+year: 2026
+bib: 2026, Manuscript.
+notes:
+ - 'The [poster](/files/presentations/eo-lp-poster.pdf) was accepted to the "Can AI do Theory?" workshop at STOC 2026.'
+abstract: >
+    The weighted Eulerian orientation counting problem ($\#\mathrm{EO}$) plays a key role in the complexity classification program for Holant problems. A recent result established an $\mathrm{FP}^{\mathrm{NP}}$ versus $\#\mathrm P$-hard dichotomy for $\#\mathrm{EO}$ problems. On the tractable side of this dichotomy, the supports of all functions admit the ternary XOR operation as a promise polymorphism relaxed in the same direction. It was left open whether all cases on the $\mathrm{FP}^{\mathrm{NP}}$ side are in fact in FP. In this paper, we settle this question by giving a polynomial-time algorithm for all cases on the $\mathrm{FP}^{\mathrm{NP}}$ side. Consequently, we obtain a complete FP versus $\#\mathrm P$-hard dichotomy for counting weighted Eulerian orientations, and further for complex-valued Holant problems with a nonzero signature of odd arity.
+    <br />
+    Our algorithm is based on a linear programming relaxation, but we use it in a nonstandard way. Instead of proving that the relaxation is integral and solving the problem directly from an optimal LP solution, we use the relaxation as a structural tool to lift the promise polymorphism condition to an ordinary polymorphism condition. This reveals an affine local structure of the constraint functions, which leads to tractability. A key technical innovation of our paper is to exploit the one-sided promise polymorphism through cubic forms of LP constraints, which interact precisely with the desired ternary XOR polymorphism.
+
+---
 id: matching-ssm
 show: [d]
 title: "Strong spatial mixing for the matching polynomial: A simple proof via Heilmann-Lieb Theorem"
@@ -134,23 +216,23 @@ type: manuscript
 year: 2025
 bib: 2025, Submitted.
 abstract: >
-    We study the connections between strong spatial mixing and zero-freeness, the two main notions used to devise deterministic approximation algorithms for counting problems. 
-    Following a recent framework introduced by [Regts, G. (2023). Absence of zeros implies strong spatial mixing. Probability Theory and Related Fields, 186(1), 621-641.] for the vertex model, we show that the implication from zero-freeness of the partition function to strong spatial mixing also works for the matching polynomial, a typical counting problem in the edge model.  
+    We study the connections between strong spatial mixing and zero-freeness, the two main notions used to devise deterministic approximation algorithms for counting problems.
+    Following a recent framework introduced by [Regts, G. (2023). Absence of zeros implies strong spatial mixing. Probability Theory and Related Fields, 186(1), 621-641.] for the vertex model, we show that the implication from zero-freeness of the partition function to strong spatial mixing also works for the matching polynomial, a typical counting problem in the edge model.
     Based on Heilmann and Lieb's results, a zero-free region $C_\Delta=\C \backslash (-\infty,-\frac{1}{4(\Delta-1)}]$ of the partition function and a Christoffel--Darboux type identity, we give a very simple proof for strong spatial mixing of the matching polynomial on graphs of degree bounded by $\Delta$ with any complex edge parameter $z \in C_\Delta$.
     This proof does not rely on the tree recursion which is commonly used  for proving strong spatial mixing in previous results.
 
+# anon manuscripts
+
 ---
-id: hardcore-cc
+id: er-zero-freeness
 show: [d]
-title: "Zero-Freeness of the Hard-Core Model with Bounded Connective Constant"
-authors: [Yuan Chen, Shuai Shao, Ke Shi]
-type: manuscript
+title: "Zero-Freeness and Deterministic Counting on Erdős–Rényi Random Graphs"
+authors: [Anon Chihaya]
+type: anon
 year: 2026
-bib: 2026, Submitted.
+notes:
+ - 'A [Lean 4 formalization](https://github.com/KeShih/ER-zero-freeness) of the zero-freeness results is available.'
 abstract: >
-    We investigate zero-free regions of the partition function of the hard-core model on finite graphs and their implications for the analyticity of free energy on infinite lattices. Classical results establish zero-freeness up to the tree uniqueness threshold based on maximum degree, but the connective constant offers a tighter structural measure for graphs like regular lattices. We bridge this gap by defining the connective constant for finite graphs via a lower bound on the number of self-avoiding walks. We prove zero-freeness in a complex neighborhood for graph families with lower connective constant $\mu$ when $\lambda < \lambda_c(\mu)$, establishing uniqueness and analyticity of the free energy density for infinite lattices beyond maximum-degree bounds. The proof uses a block contraction technique that lifts the correlation decay property from a real interval to a strip-like complex neighborhood.
-
-
-
+    We establish complex zero-freeness and deterministic fully polynomial-time approximation schemes (FPTASes) for spin systems on the Erdős–Rényi random graph $G(n,d/n)$. For the antiferromagnetic $q$-state Potts model ($q\ge3$) with $d<d_2(q)\sim2q\log q$, the partition function is with high probability zero-free on a fixed-width neighborhood of $[0,1]$, including proper $q$-colorings at $z=0$; this yields a deterministic FPTAS for $q\ge(1/2+\eta)d/\log d$ (fixed $\eta>0$, large $d$), and, combined with the Achlioptas–Naor noncolorability bound, a deterministic FPTAS for counting proper $q$-colorings for all but at most one integer $q$ at each fixed $d>0$. An appendix extends the zero-freeness and the FPTAS up to the Erdős–Rényi condensation threshold of the Potts model, including proper colorings. For the zero-field Ising antiferromagnet and the zero-field Viana–Bray diluted spin glass on $G(n,d/n)$, we likewise obtain fixed-width zero-free neighborhoods and deterministic FPTASes up to their Kesten–Stigum thresholds. Dividing out each graph's forest weight removes the order-$\sqrt n$ fluctuations of the log-partition function caused by the random number of edges; complex moment bounds and Poisson short-cycle Taylor truncations then transfer nonvanishing from an explicit random cycle model, compensated where necessary, while connected-set Möbius inversion and Cayley's tree bound handle unbounded degrees in Barvinok interpolation.
 
 # thesis

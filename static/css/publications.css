@@ -1,0 +1,6 @@
+/* Paper titles on the homepage link to their PDFs; keep them looking exactly
+   like plain titles, without the dotted underline of other links. */
+.paper-title a,
+.paper-title a:hover {
+  border-bottom: 0;
+}
