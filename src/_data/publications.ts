@@ -21,6 +21,7 @@ interface Meta {
   venues: Record<string, string>;
   people: Record<string, string | null | undefined>;
   types: Record<string, string>;
+  typeStatus?: Record<string, string>; // per type: bib line "<year>, <status>" for papers without `bib`
   selectedMode?: boolean; // list only `selected` papers until "See all publications"
 }
 
@@ -74,6 +75,10 @@ function buildPaper(paper: RawPaper, meta: Meta): ProcessedPaper {
     selected: meta.selectedMode && !paper.selected ? "cv-non-selected" : "cv-selected",
   };
 
+  const status = meta.typeStatus?.[paper.type];
+  if (!paper.bib && status) {
+    result.bib = `${paper.year}, ${status}`;
+  }
   if (paper.notes) {
     result.notes = paper.notes.map(renderInline);
   }
