@@ -4,3 +4,8 @@
 .paper-title a:hover {
   border-bottom: 0;
 }
+
+/* "Anon" in the Anon Manuscripts heading: capital A, small capitals for the rest. */
+.small-caps {
+  font-variant: small-caps;
+}

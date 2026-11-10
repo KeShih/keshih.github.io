@@ -24,7 +24,7 @@ types:
   conference: Conference Publications
   journal : Journal Publications
   manuscript: Preprint
-  anon: Anon Manuscripts
+  anon: '<span><span class="small-caps">Anon</span> Manuscripts</span>' # one outer span, so the flex row keeps the space
   thesis: Thesis
 
 # true: the homepage first lists only the papers marked `selected: true`, with
