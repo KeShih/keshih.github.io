@@ -24,6 +24,7 @@ types:
   conference: Conference Publications
   journal : Journal Publications
   manuscript: Preprint
+  anon: Anon Manuscripts
   thesis: Thesis
 
 # true: the homepage first lists only the papers marked `selected: true`, with
@@ -34,7 +35,7 @@ selectedMode: false
 # id: the unique identifier
 # title: title of the article
 # authors: a list of authors
-# type: conference, journal, manuscript or thesis
+# type: conference, journal, manuscript, anon or thesis
 # pub: abbreviation of the conference name or publication
 # year: the publication year
 # bib: this overloads everything to show as the bibliography line
@@ -159,19 +160,6 @@ notes:
 # manuscripts
 
 ---
-id: er-zero-freeness
-show: [d]
-title: "Zero-Freeness and Deterministic Counting on Erdős–Rényi Random Graphs"
-authors: [Ke Shi]
-type: manuscript
-year: 2026
-bib: 2026, Manuscript.
-notes:
- - 'A [Lean 4 formalization](https://github.com/KeShih/ER-zero-freeness) of the zero-freeness results is available.'
-abstract: >
-    We establish complex zero-freeness and deterministic fully polynomial-time approximation schemes (FPTASes) for spin systems on the Erdős–Rényi random graph $G(n,d/n)$. For the antiferromagnetic $q$-state Potts model ($q\ge3$) with $d<d_2(q)\sim2q\log q$, the partition function is with high probability zero-free on a fixed-width neighborhood of $[0,1]$, including proper $q$-colorings at $z=0$; this yields a deterministic FPTAS for $q\ge(1/2+\eta)d/\log d$ (fixed $\eta>0$, large $d$), and, combined with the Achlioptas–Naor noncolorability bound, a deterministic FPTAS for counting proper $q$-colorings for all but at most one integer $q$ at each fixed $d>0$. An appendix extends the zero-freeness and the FPTAS up to the Erdős–Rényi condensation threshold of the Potts model, including proper colorings. For the zero-field Ising antiferromagnet and the zero-field Viana–Bray diluted spin glass on $G(n,d/n)$, we likewise obtain fixed-width zero-free neighborhoods and deterministic FPTASes up to their Kesten–Stigum thresholds. Dividing out each graph's forest weight removes the order-$\sqrt n$ fluctuations of the log-partition function caused by the random number of edges; complex moment bounds and Poisson short-cycle Taylor truncations then transfer nonvanishing from an explicit random cycle model, compensated where necessary, while connected-set Möbius inversion and Cayley's tree bound handle unbounded degrees in Barvinok interpolation.
-
----
 id: potts-ci
 show: [d]
 pdf: https://arxiv.org/pdf/2610.12456
@@ -226,5 +214,20 @@ abstract: >
     Following a recent framework introduced by [Regts, G. (2023). Absence of zeros implies strong spatial mixing. Probability Theory and Related Fields, 186(1), 621-641.] for the vertex model, we show that the implication from zero-freeness of the partition function to strong spatial mixing also works for the matching polynomial, a typical counting problem in the edge model.
     Based on Heilmann and Lieb's results, a zero-free region $C_\Delta=\C \backslash (-\infty,-\frac{1}{4(\Delta-1)}]$ of the partition function and a Christoffel--Darboux type identity, we give a very simple proof for strong spatial mixing of the matching polynomial on graphs of degree bounded by $\Delta$ with any complex edge parameter $z \in C_\Delta$.
     This proof does not rely on the tree recursion which is commonly used  for proving strong spatial mixing in previous results.
+
+# anon manuscripts
+
+---
+id: er-zero-freeness
+show: [d]
+title: "Zero-Freeness and Deterministic Counting on Erdős–Rényi Random Graphs"
+authors: [Anon Chihaya]
+type: anon
+year: 2026
+bib: 2026, Manuscript.
+notes:
+ - 'A [Lean 4 formalization](https://github.com/KeShih/ER-zero-freeness) of the zero-freeness results is available.'
+abstract: >
+    We establish complex zero-freeness and deterministic fully polynomial-time approximation schemes (FPTASes) for spin systems on the Erdős–Rényi random graph $G(n,d/n)$. For the antiferromagnetic $q$-state Potts model ($q\ge3$) with $d<d_2(q)\sim2q\log q$, the partition function is with high probability zero-free on a fixed-width neighborhood of $[0,1]$, including proper $q$-colorings at $z=0$; this yields a deterministic FPTAS for $q\ge(1/2+\eta)d/\log d$ (fixed $\eta>0$, large $d$), and, combined with the Achlioptas–Naor noncolorability bound, a deterministic FPTAS for counting proper $q$-colorings for all but at most one integer $q$ at each fixed $d>0$. An appendix extends the zero-freeness and the FPTAS up to the Erdős–Rényi condensation threshold of the Potts model, including proper colorings. For the zero-field Ising antiferromagnet and the zero-field Viana–Bray diluted spin glass on $G(n,d/n)$, we likewise obtain fixed-width zero-free neighborhoods and deterministic FPTASes up to their Kesten–Stigum thresholds. Dividing out each graph's forest weight removes the order-$\sqrt n$ fluctuations of the log-partition function caused by the random number of edges; complex moment bounds and Poisson short-cycle Taylor truncations then transfer nonvanishing from an explicit random cycle model, compensated where necessary, while connected-set Möbius inversion and Cayley's tree bound handle unbounded degrees in Barvinok interpolation.
 
 # thesis
