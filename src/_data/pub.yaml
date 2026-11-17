@@ -23,7 +23,7 @@ people:
 types:
   conference: Conference Publications
   journal : Journal Publications
-  manuscript: Preprint
+  manuscript: Preprints
   anon: '<span><span class="small-caps">Anon</span> Manuscripts</span>' # one outer span, so the flex row keeps the space
   thesis: Thesis
 
@@ -158,6 +158,18 @@ notes:
  - An [extended abstract](/files/papers/sub4part.pdf) of this work appeared in SODA 2023.
 
 # manuscripts
+
+---
+id: sub5part
+show: [d]
+pdf: https://arxiv.org/pdf/2611.21187
+title: A Polynomial Time Algorithm for Finding a Minimum 5-Partition of a Submodular Function
+authors: [Yuhao Liu, Ke Shi, Chao Xu]
+type: manuscript
+year: 2026
+bib: 2026, Preprint.
+abstract: >
+    Given a real-valued submodular function on a finite ground set, the minimum $k$-partition problem asks for a partition into $k$ nonempty parts minimizing the sum of their function values. We give a polynomial-time algorithm for $k=5$. The idea follows directly from the previous $k=4$ result, where there is precisely one obstruction for generalizing it to $k=5$. We show the special case can be handled by reasoning about a restricted family of $3$-partitions.
 
 ---
 id: potts-ci
