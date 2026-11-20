@@ -10,6 +10,11 @@ eleventyExcludeFromCollections: true
 
     <title>Ke Shi</title>
     <meta name="description" content="The personal webpage of Ke Shi." />
+    <script>
+      // Marks that script runs, before the first paint: the papers are only
+      // blurred (homepage.css) when the script that clears them works.
+      document.documentElement.classList.add("js");
+    </script>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css"
@@ -86,6 +91,33 @@ eleventyExcludeFromCollections: true
     {% endif %}
 
     <script>
+      // Goodbye, theory: every paper starts blurred (homepage.css) and turns
+      // clear for good when it is clicked, focused, or linked to (/#eo-lp).
+      document.addEventListener("DOMContentLoaded", function () {
+        function reveal(entry) {
+          if (entry) entry.classList.add("revealed");
+        }
+        [].forEach.call(
+          document.getElementsByClassName("cv-entry"),
+          function (entry) {
+            entry.addEventListener("click", function () {
+              reveal(entry);
+            });
+            entry.addEventListener("focusin", function () {
+              reveal(entry);
+            });
+          }
+        );
+        function revealLinked() {
+          var id = decodeURIComponent(location.hash.slice(1));
+          var target = id && document.getElementById(id);
+          reveal(target && target.closest(".cv-entry"));
+        }
+        revealLinked();
+        window.addEventListener("hashchange", revealLinked);
+      });
+    </script>
+    <script>
       // Every so often, let the photo admit who it really is.
       document.addEventListener("DOMContentLoaded", function () {
         var avatar = document.getElementById("avatar");
@@ -101,8 +133,9 @@ eleventyExcludeFromCollections: true
         }
         setTimeout(peek, 4000 + Math.random() * 4000);
 
-        // ...and now and then, sign the page as her -- but only while the
-        // signature is on screen, so nobody catches it half-written.
+        // ...and sign the page as her, over and over: once the signature has
+        // dissolved it is written again -- but only while it is on screen, so
+        // nobody catches it half-written.
         var signature = document.getElementById("signature");
         var svg = signature.querySelector("svg");
         var settle = signature.querySelector(".ink-settle");
@@ -110,18 +143,33 @@ eleventyExcludeFromCollections: true
         var still =
           window.matchMedia &&
           matchMedia("(prefers-reduced-motion: reduce)").matches;
-        // The pen strokes live in an SVG mask; each carries its own timeline
-        // (data-t: ms, data-f: fraction drawn). Driving the dash offsets from
-        // script, frame by frame, repaints reliably everywhere, including
-        // iOS Safari.
+        // The pen strokes live in an SVG mask; each is a polyline (M and L
+        // only) with its own timeline (data-t: ms, data-f: fraction drawn).
+        // Each frame, script cuts every stroke's path back to the part
+        // written so far, which repaints reliably everywhere, including iOS
+        // Safari. Not a dash offset: Safari restarts a dash pattern partway
+        // along a long path, so it wrote "Chihaya" in three places at once.
         var strokes = [].map.call(
           signature.querySelectorAll(".pen path"),
           function (p) {
-            var len = p.getTotalLength();
-            p.setAttribute("stroke-dasharray", len + " " + len);
+            var full = p.getAttribute("d");
+            var n = full.match(/-?[\d.]+/g).map(Number);
+            var pts = [], at = [0], cmd = [];
+            for (var i = 0; i < n.length; i += 2) {
+              pts.push([n[i], n[i + 1]]);
+              cmd.push((i ? "L" : "M") + n[i] + " " + n[i + 1]);
+              if (i)
+                at.push(
+                  at[at.length - 1] +
+                    Math.hypot(n[i] - n[i - 2], n[i + 1] - n[i - 1])
+                );
+            }
             return {
               p: p,
-              len: len,
+              full: full,
+              pts: pts,
+              at: at, // length of the path up to each point
+              cmd: cmd,
               t: p.getAttribute("data-t").split(",").map(Number),
               f: p.getAttribute("data-f").split(",").map(Number),
             };
@@ -136,7 +184,20 @@ eleventyExcludeFromCollections: true
               while (t[i] < ms) i++;
               frac = f[i - 1] + ((f[i] - f[i - 1]) * (ms - t[i - 1])) / (t[i] - t[i - 1] || 1);
             }
-            s.p.setAttribute("stroke-dashoffset", s.len * (1 - frac));
+            if (frac === s.frac) return;
+            s.frac = frac;
+            var d = s.full;
+            if (frac < 1) {
+              // whole segments up to point k - 1, then part of the next one
+              var at = s.at, to = at[at.length - 1] * frac, k = 1;
+              while (at[k] < to) k++;
+              var a = s.pts[k - 1], b = s.pts[k];
+              var part = (to - at[k - 1]) / (at[k] - at[k - 1] || 1);
+              d = s.cmd.slice(0, k).join("");
+              if (part > 0)
+                d += "L" + (a[0] + (b[0] - a[0]) * part) + " " + (a[1] + (b[1] - a[1]) * part);
+            }
+            s.p.setAttribute("d", d);
           });
           settle.setAttribute("opacity", Math.max(0, Math.min(1, (ms - total) / 250)));
         }
@@ -172,7 +233,9 @@ eleventyExcludeFromCollections: true
             return;
           }
           play();
-          setTimeout(sign, 45000 + Math.random() * 30000);
+          // 8s until the fade starts, 2s of fade (homepage.css), then a beat
+          // of empty page before the pen comes back
+          setTimeout(sign, 8000 + 2000 + 1000);
         }
         setTimeout(sign, 1200);
       });
@@ -180,6 +243,11 @@ eleventyExcludeFromCollections: true
 
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    {# Rounded-serif face for the farewell line; only its Latin slice is downloaded. #}
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&display=swap"
       rel="stylesheet"
     />
     <link
@@ -251,10 +319,10 @@ eleventyExcludeFromCollections: true
               guidance of <a href="https://chaoxu.prof">Chao Xu</a>.
             </p>
             <p>
-              During the first three years of my Ph.D., I focused on theoretical
-              computer science, including algorithms, combinatorial optimization,
-              and approximate counting. I have since shifted my focus and am now
-              exploring more practical, application-oriented directions. Here is my
+              I spent the first three years of my Ph.D. on theoretical computer
+              science: algorithms, combinatorial optimization, and approximate
+              counting. I have since left theory, and now work on more
+              practical, application-oriented problems. Here is my
               <a href="files/CV-en.pdf">CV</a>.
             </p>
 
@@ -272,6 +340,8 @@ eleventyExcludeFromCollections: true
                 ><samp itemprop="email">chihaya.anon@ustc.edu</samp></a
               >.
             </p>
+
+            <p class="farewell" lang="ja-Latn">Riron wa ittan koko made!</p>
 
             <div class="signature" id="signature">
               {% include "partials/signature.svg" %}
@@ -292,6 +362,10 @@ eleventyExcludeFromCollections: true
         >
       </div>
       {% endif %}
+
+      <div class="{{ hiddenInSelectedMode }} row">
+        <p>My work in theory, so far.</p>
+      </div>
 
       {% for pub_type in publications.pubTypes %}
       <div class="{{ hiddenInSelectedMode }} row pubtypeheader">{{ pub_type.title | safe }}</div>

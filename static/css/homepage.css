@@ -237,3 +237,35 @@ abbr[title] {
     transition: opacity 2s;
   }
 }
+
+/* The farewell above the signature, in a Japanese rounded-serif face (loaded in
+   index.njk); it falls back to the body face. */
+.farewell {
+  margin-top: 0.5em; /* a gap, so it is not read as one more line of the bio */
+  font-family: "Kiwi Maru", KaTeX_Main, "Times New Roman", serif;
+}
+
+/* Goodbye, theory: a paper is blurred until its first click (index.njk adds
+   .revealed). Only under html.js, so the list stays readable without script. */
+.cv-entry {
+  transition: filter 0.4s ease, opacity 0.4s ease;
+}
+.js .cv-entry:not(.revealed) {
+  filter: blur(3px);
+  opacity: 0.6;
+  cursor: pointer;
+}
+.js .cv-entry:not(.revealed) > * {
+  pointer-events: none; /* the first click only clears; it follows no link */
+}
+@media (prefers-reduced-motion: reduce) {
+  .cv-entry {
+    transition: none;
+  }
+}
+@media print {
+  .js .cv-entry:not(.revealed) {
+    filter: none;
+    opacity: 1;
+  }
+}
