@@ -199,17 +199,16 @@ abbr[title] {
   user-select: none;
 }
 @media screen and (min-width: 114ex) {
-  /* float in the whitespace beside the photo instead of reserving room */
   .intro-right {
-    position: relative;
     align-self: flex-start; /* end at the text, not at the photo's height */
   }
+  /* The signature hangs at the right, below the farewell. Its tail may reach
+     down beside the section heading under the intro, which is short and at
+     the left, but the negative margin reserves only that much: the first
+     paper's title, which runs the full width, starts below the signature. */
   .signature {
-    position: absolute;
-    top: calc(100% - 0.2em);
-    right: 0;
-    width: 280px;
-    margin: 0;
+    width: 310px;
+    margin: -0.2em 0 -42px auto;
   }
 }
 .signature svg {
