@@ -21,6 +21,7 @@ interface Meta {
   venues: Record<string, string>;
   people: Record<string, string | null | undefined>;
   types: Record<string, string>;
+  smallCaps?: string[]; // authors whose names are set in small caps
   selectedMode?: boolean; // list only `selected` papers until "See all publications"
 }
 
@@ -43,6 +44,7 @@ interface RawPaper {
 interface Coauthor {
   name: string;
   link: string;
+  smallCaps: boolean;
 }
 
 type ProcessedPaper = Omit<RawPaper, "authors" | "pub" | "selected"> & {
@@ -54,10 +56,11 @@ type ProcessedPaper = Omit<RawPaper, "authors" | "pub" | "selected"> & {
   slidesHref?: string;
 };
 
-function coauthorList(authors: string[], people: Meta["people"]): Coauthor[] {
+function coauthorList(authors: string[], meta: Meta): Coauthor[] {
   return authors.map((name) => ({
     name,
-    link: people[name] || "",
+    link: meta.people[name] || "",
+    smallCaps: (meta.smallCaps || []).includes(name),
   }));
 }
 
@@ -70,7 +73,7 @@ function buildPaper(paper: RawPaper, meta: Meta): ProcessedPaper {
     pdfHref: show.includes("d") ? paper.pdf || `/files/papers/${paper.id}.pdf` : undefined,
     slidesHref: show.includes("p") ? `/files/presentations/${paper.id}.pdf` : undefined,
     title: renderInline(paper.title),
-    authors: coauthorList(paper.authors || [], meta.people),
+    authors: coauthorList(paper.authors || [], meta),
     selected: meta.selectedMode && !paper.selected ? "cv-non-selected" : "cv-selected",
   };
 

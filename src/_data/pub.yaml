@@ -20,6 +20,9 @@ people:
   Jincheng Guan:
   Bohan Wang:
 
+# authors whose names are set in small caps, like "Anon" in its heading
+smallCaps: [Anon Chihaya]
+
 # sections, in the order they are listed on the homepage
 types:
   anon: '<span><span class="small-caps">Anon</span> Manuscripts</span>' # one outer span, so the flex row keeps the space

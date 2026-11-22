@@ -412,8 +412,10 @@ eleventyExcludeFromCollections: true
           <ul class="coauthor-list">
             {% for author in paper.authors %}
             <li>
-              {% if author.link %}<a href="{{ author.link }}">{{ author.name }}</a
+              {% if author.link %}<a href="{{ author.link }}">{% endif -%}
+              {% if author.smallCaps %}<span class="small-caps">{{ author.name }}</span
               >{% else %}{{ author.name }}{% endif %}
+              {%- if author.link %}</a>{% endif %}
             </li>
             {% endfor %}
           </ul>
