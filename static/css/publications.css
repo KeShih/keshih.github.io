@@ -5,6 +5,48 @@
   border-bottom: 0;
 }
 
+/* KaTeX_Main, the body face, has no accented letters, so "Erdős–Rényi" took its
+   ő and é from Times New Roman, out of step with the letters around them. These
+   faces supply only those letters (U+00C0-024F), from LM Roman 10, the Latin
+   Modern successor of the Computer Modern that KaTeX_Main is drawn from.
+   Subset from TeX Live's lmroman10-*.otf with fontTools and renamed, as the
+   GUST Font License asks of modified fonts. */
+@font-face {
+  font-family: "LM Roman Accents";
+  src: url("/files/fonts/lmroman10-accents-regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+00C0-024F;
+}
+@font-face {
+  font-family: "LM Roman Accents";
+  src: url("/files/fonts/lmroman10-accents-bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+00C0-024F;
+}
+@font-face {
+  font-family: "LM Roman Accents";
+  src: url("/files/fonts/lmroman10-accents-italic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+00C0-024F;
+}
+@font-face {
+  font-family: "LM Roman Accents";
+  src: url("/files/fonts/lmroman10-accents-bolditalic.woff") format("woff");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+  unicode-range: U+00C0-024F;
+}
+.cv-entry {
+  font-family: KaTeX_Main, "LM Roman Accents", "Times New Roman", serif;
+}
+
 /* "Anon" in the Anon Manuscripts heading, and the names listed under smallCaps in
    pub.yaml (Anon Chihaya): capitals as written, small capitals for the rest. */
 .small-caps {
