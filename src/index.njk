@@ -363,14 +363,16 @@ eleventyExcludeFromCollections: true
       </div>
       {% endif %}
 
+      {% for pub_type in publications.pubTypes %}
+      {% if pub_type.theoryCaption %}
       <div class="{{ hiddenInSelectedMode }} row">
         <p>My work in theory, so far.</p>
       </div>
-
-      {% for pub_type in publications.pubTypes %}
+      {% endif %}
       <div class="{{ hiddenInSelectedMode }} row pubtypeheader">{{ pub_type.title | safe }}</div>
       {% for paper in pub_type.papers %}
-      <div class="{{ paper.selected }} row cv-entry" id="{{ paper.id }}">
+      {# Papers in a `clear` section (Anon's) start out revealed, never blurred. #}
+      <div class="{{ paper.selected }} row cv-entry{% if pub_type.clear %} revealed{% endif %}" id="{{ paper.id }}">
         <input
           type="checkbox"
           class="abstract-guard"

@@ -100,7 +100,12 @@ export default function () {
   const papers = docs.slice(1).filter((d): d is RawPaper => d != null);
 
   const types = meta.types;
-  const pubTypes: { title: string; papers: ProcessedPaper[] }[] = [];
+  const pubTypes: {
+    title: string;
+    papers: ProcessedPaper[];
+    clear: boolean; // never blurred: not part of "My work in theory, so far."
+    theoryCaption: boolean; // the caption goes above this section
+  }[] = [];
 
   for (const [typeKey, typeTitle] of Object.entries(types)) {
     const typePapers = papers.filter((p) => p.type === typeKey);
@@ -108,8 +113,12 @@ export default function () {
     pubTypes.push({
       title: typeTitle,
       papers: typePapers.map((p) => buildPaper(p, meta)),
+      clear: typeKey === "anon", // Anon's work, not mine
+      theoryCaption: false,
     });
   }
+  const firstTheory = pubTypes.find((t) => !t.clear);
+  if (firstTheory) firstTheory.theoryCaption = true;
 
   return { pubTypes, selectedMode: Boolean(meta.selectedMode) };
 }
