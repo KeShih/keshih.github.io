@@ -1,0 +1,12 @@
+/* Paper titles on the homepage link to their PDFs; keep them looking exactly
+   like plain titles, without the dotted underline of other links. */
+.paper-title a,
+.paper-title a:hover {
+  border-bottom: 0;
+}
+
+/* "Anon" in the Anon Manuscripts heading, and the names listed under smallCaps in
+   pub.yaml (Anon Chihaya): capitals as written, small capitals for the rest. */
+.small-caps {
+  font-variant: small-caps;
+}
